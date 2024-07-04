@@ -21,11 +21,10 @@ class BusinessClass {
     public Dependency1 getDependency1() {
         return dependency1;
     }
-
-    @Autowired // Constructor injection don't need autowired it would still work.
     /*
      * It is recommended using constructor injection. Since you only need it once. 
      */
+    @Autowired // Constructor injection don't need autowired it would still work.
     public BusinessClass(Dependency1 dependency1, Dependency2 dependency2) {
         super();
         System.out.println("Contructor injection");

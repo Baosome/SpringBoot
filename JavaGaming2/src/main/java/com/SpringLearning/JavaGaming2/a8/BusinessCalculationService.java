@@ -1,0 +1,20 @@
+package com.SpringLearning.JavaGaming2.a8;
+
+import java.util.Arrays;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class BusinessCalculationService {
+
+    DataService dataService;
+
+    public BusinessCalculationService(DataService dataService) {
+        super();
+        this.dataService = dataService;
+    }
+
+    public int findMax() {
+        return Arrays.stream(dataService.retrieveData()).max().orElse(0);
+    }
+}

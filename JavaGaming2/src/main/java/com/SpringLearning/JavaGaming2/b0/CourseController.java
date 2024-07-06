@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CourseController {
-
     @RequestMapping("/courses")
     public List<Course> retrieveAllCourses(){
         return Arrays.asList(
@@ -18,4 +17,5 @@ public class CourseController {
             new Course(4, "Learn ChatGPT", "Bao 3")
         );
     }
+
 }

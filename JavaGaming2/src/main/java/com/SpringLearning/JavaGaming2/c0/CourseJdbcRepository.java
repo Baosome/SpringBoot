@@ -1,6 +1,7 @@
 package com.SpringLearning.JavaGaming2.c0;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -21,6 +22,11 @@ public class CourseJdbcRepository {
         where id = ?;
     """;
 
+    String mySelectQuery = """
+        select * from course
+        where id = ?;
+    """;
+
     public void insert(Course course){
         springJdbcTemplate.update(myInsertQuery, 
         course.getId(), 
@@ -28,9 +34,14 @@ public class CourseJdbcRepository {
         course.getAuthor());
     }
 
-    public void delete(int id){
+    public void delete(long id){
         springJdbcTemplate.update(myDeleteQuery, 
         id);
+    }
+
+    public Course select(long id){
+        return springJdbcTemplate.
+            queryForObject(mySelectQuery, new BeanPropertyRowMapper<>(Course.class), id);
     }
 
 

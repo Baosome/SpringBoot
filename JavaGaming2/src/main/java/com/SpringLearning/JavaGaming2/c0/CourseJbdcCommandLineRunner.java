@@ -16,6 +16,8 @@ public class CourseJbdcCommandLineRunner implements CommandLineRunner{
         repository.insert(new Course(2, "Learn how to be hot", "David"));
         repository.insert(new Course(3, "Learn how to be handsome", "SBeve"));
         repository.delete(2);
+        Course myCourse = repository.select(1); // need setters
+        System.out.println(myCourse);
     }
     
 }

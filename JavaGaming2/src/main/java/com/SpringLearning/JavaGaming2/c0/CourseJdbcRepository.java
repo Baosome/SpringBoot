@@ -10,13 +10,28 @@ public class CourseJdbcRepository {
     @Autowired
     JdbcTemplate springJdbcTemplate;
 
-    String myQuery =
+    String myInsertQuery =
     """
         insert into course (id, name, author)
-        values(1, 'How to be cool', 'Bao');
-            """;
+        values(?, ?, ?);
+    """;
 
-    public void insert(){
-        springJdbcTemplate.update(myQuery);
+    String myDeleteQuery = """
+        delete from course
+        where id = ?;
+    """;
+
+    public void insert(Course course){
+        springJdbcTemplate.update(myInsertQuery, 
+        course.getId(), 
+        course.getName(), 
+        course.getAuthor());
     }
+
+    public void delete(int id){
+        springJdbcTemplate.update(myDeleteQuery, 
+        id);
+    }
+
+
 }

@@ -12,7 +12,10 @@ public class CourseJbdcCommandLineRunner implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        repository.insert();
+        repository.insert(new Course(1, "Learn how to be cool", "Bao"));
+        repository.insert(new Course(2, "Learn how to be hot", "David"));
+        repository.insert(new Course(3, "Learn how to be handsome", "SBeve"));
+        repository.delete(2);
     }
     
 }

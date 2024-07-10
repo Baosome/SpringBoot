@@ -32,4 +32,10 @@ public class HelloController {
         
     }
 
+    //JSP java solo pages
+    @RequestMapping("/Hello-Jsp")
+    public String sayHelloJsp(){
+        return "sayHello";
+    }
+
 }

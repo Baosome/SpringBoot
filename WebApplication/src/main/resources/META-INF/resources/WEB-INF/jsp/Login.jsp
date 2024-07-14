@@ -6,6 +6,7 @@
     </head>
     <body>
         <h2>Please Log in!</h2>
+        <hr>
         <pre>${Error}</pre>
         <form method="post">
             Name: <input type="text" name="name">

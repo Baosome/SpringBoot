@@ -1,5 +1,6 @@
 package com.Webapp.WebApplication.Todo;
 
+import java.time.LocalDate;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,6 +34,8 @@ public class TodoController {
 
     @RequestMapping(value = "add-todo", method=RequestMethod.POST)
     public String addNewTodoPage(@RequestParam String description, ModelMap model) {
+        String username = (String)model.get("name");
+        todoService.addTodo(username, description, LocalDate.now().plusYears(1), false);
         return "redirect:list-todos";
     }
 }

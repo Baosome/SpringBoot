@@ -6,6 +6,9 @@
         <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
     </head>
     <body>
+
+        <%@ include file="common/navigation.jspf"  @%>
+
         <div class="container">
             <h2>Welcome back, ${name}</h3>
             <hr>

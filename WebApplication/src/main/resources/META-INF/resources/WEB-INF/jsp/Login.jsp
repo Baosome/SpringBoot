@@ -5,6 +5,7 @@
     </head>
     </head>
     <body>
+        <%@ include file="common/navigation.jspf" %>
         <div class="container">
             <h2>Please Log in!</h2>
             <hr>

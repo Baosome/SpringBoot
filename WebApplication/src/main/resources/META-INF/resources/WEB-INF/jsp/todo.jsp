@@ -1,18 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
-
-<html>
-    <head>
-        <title>Adding a new TODO</title>
-        <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
-        <link 
-            href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" 
-            rel="stylesheet" >
-    </head>
-    <body>
-
-        <%@ include file="common/navigation.jspf"  @%>
+        <%@ include file="common/header.jspf" %>	
+        <%@ include file="common/navigation.jspf" %>	
 
         <div class="container">
             <h1>Enter Todo Details</h1>

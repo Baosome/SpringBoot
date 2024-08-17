@@ -17,6 +17,7 @@ public class StigEntity {
 
     public StigEntity(String name, Integer version, Integer release) {
         Name = name;
+
         Version = version;
         Release = release;
     }
@@ -47,9 +48,9 @@ public class StigEntity {
 
     @Override
     public String toString() {
-        return "StigEntity [Name=" + Name + ", Version=" + Version + ", Release=" + Release + "]";
+        return "StigEntity [SystemID=" + SystemID + ", Name=" + Name + ", Version=" + Version + ", Release=" + Release
+                + "]";
     }
 
-    
-    
+
 }

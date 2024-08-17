@@ -1,25 +1,27 @@
 package com.Bao.StigManager;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("name")
 public class WelcomeController {
 
     @RequestMapping(value="/", method = RequestMethod.GET)
-    public String Welcome(){
+    public String Welcome(ModelMap modelMap){
+        modelMap.put("name", getUsername());
         return "WelcomePage";
     }
 
-    /*
-     * TODOS:
-     *  Added user name
-     *  Make user name persistance
-     *  Add list of system to user name
-     *  Thus need to fix system entity to incude username as key
-     *  Add For Each table in welcome jsp
-     * 
-     */
+
+    private String getUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
+    }
 
 }

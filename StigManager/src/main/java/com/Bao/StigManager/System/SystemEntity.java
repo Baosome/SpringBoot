@@ -3,7 +3,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.Bao.StigManager.STIG.StigEntity;
@@ -18,13 +18,13 @@ public class SystemEntity {
 
     private String SystemName;
 
-    private Date AtoDate;
+    private LocalDate  AtoDate;
 
     @OneToMany
     @JoinColumn(name = "id")
     private List<StigEntity> Stigs;
 
-    public SystemEntity(String systemName, Date atoDate, List<StigEntity> stigs, int eMassId) {
+    public SystemEntity(String systemName, LocalDate atoDate, List<StigEntity> stigs, int eMassId) {
         SystemName = systemName;
         AtoDate = atoDate;
         Stigs = stigs;
@@ -39,11 +39,11 @@ public class SystemEntity {
         SystemName = systemName;
     }
 
-    public Date getAtoDate() {
+    public LocalDate getAtoDate() {
         return AtoDate;
     }
 
-    public void setAtoDate(Date atoDate) {
+    public void setAtoDate(LocalDate atoDate) {
         AtoDate = atoDate;
     }
 

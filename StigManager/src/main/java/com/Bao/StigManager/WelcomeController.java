@@ -8,9 +8,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class WelcomeController {
 
     @RequestMapping(value="/", method = RequestMethod.GET)
-
     public String Welcome(){
         return "WelcomePage";
     }
+
+    /*
+     * TODOS:
+     *  Added user name
+     *  Make user name persistance
+     *  Add list of system to user name
+     *  Thus need to fix system entity to incude username as key
+     *  Add For Each table in welcome jsp
+     * 
+     */
 
 }

@@ -13,10 +13,10 @@ public class StigManagerApplication {
      * TODOS:
      *  Added user name [X]
      *  Make user name persistance [X]
-     *  Make System list page []
-     *  Add list of system to user name []
-     *  Thus need to fix system entity to incude username as key []
-     *  Add For Each table in welcome jsp []
+     *  Make System list page [X]
+     *  Add list of system to user name [X]
+     *  Thus need to fix system entity to incude username as key [X]
+     *  Add For Each table in welcome jsp [X]
      * 
      */
 }

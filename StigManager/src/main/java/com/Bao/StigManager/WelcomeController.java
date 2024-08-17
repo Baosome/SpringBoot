@@ -1,5 +1,7 @@
 package com.Bao.StigManager;
 
+import java.util.List;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -8,13 +10,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.Bao.StigManager.Repositories.SystemRepository;
+import com.Bao.StigManager.System.SystemEntity;
+
 @Controller
 @SessionAttributes("name")
 public class WelcomeController {
 
+    private SystemRepository systemRepository;
+
+    public WelcomeController(SystemRepository systemRepository) {
+        this.systemRepository = systemRepository;
+    }
+
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String Welcome(ModelMap modelMap){
         modelMap.put("name", getUsername());
+
+        // Grab repository and display it to system list in welcome page
+        List<SystemEntity> systems = systemRepository.findByUsername(getUsername());
+        modelMap.addAttribute("systems", systems);
+
         return "WelcomePage";
     }
 

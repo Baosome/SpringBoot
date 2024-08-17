@@ -16,7 +16,7 @@ public class SystemEntity {
     @Id
     private int eMassId;
 
-    private String Username;
+    private String username;
 
     private String SystemName;
 
@@ -26,21 +26,23 @@ public class SystemEntity {
     @JoinColumn(name = "id")
     private List<StigEntity> Stigs;
 
-    
+    public SystemEntity() {
+    }
 
-    public SystemEntity(int eMassId, String username, String systemName, LocalDate atoDate) {
+    public SystemEntity(int eMassId, String username, String systemName, LocalDate atoDate, List<StigEntity> stigs) {
         this.eMassId = eMassId;
-        Username = username;
+        this.username = username;
         SystemName = systemName;
         AtoDate = atoDate;
+        Stigs = stigs;
     }
 
     public String getUsername() {
-        return Username;
+        return username;
     }
 
-    public void setUsername(String username) {
-        Username = username;
+    public void setUsername(String theusername) {
+        username = theusername;
     }
 
     public String getSystemName() {

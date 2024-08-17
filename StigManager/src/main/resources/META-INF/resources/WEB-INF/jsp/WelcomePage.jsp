@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +22,6 @@
         <table class="table">
             <thead class="table-dark">
                 <tr>
-                    <th>#</th>
                     <th>System Name</th>
                     <th>ATO Date</th>
                     <th>eMass ID</th>
@@ -27,13 +29,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <c:forEach items ="${systems}" var = "system">
+                    <tr>
+                        <td>${system.systemName}</td>
+                        <td>${system.atoDate}</td>
+                        <td>${system.eMassId}</td>
+                        <td><button type="button" class="btn btn-primary">Go</button></td>
+                    </tr>
+                </c:forEach>
+                <!-- <tr>
                     <td>1</td>
                     <td>BAOLAN</td>
                     <td>3/6/2024</td>
                     <td>1234</td>
                     <td><button type="button" class="btn btn-primary">Go</button></td>
-                  </tr>
+                </tr> -->
             </tbody>
           </table>
     </div>

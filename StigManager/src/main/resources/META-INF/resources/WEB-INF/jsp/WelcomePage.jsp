@@ -15,9 +15,9 @@
             <a href="/" class="navbar-brand">Home</a>
         </div>
     </nav>
-    <div class="container ">
+    <div class="container">
         <div class="d-flex justify-content-end">
-            <button class="btn btn-success m-3">Add New System</button>
+            <a class="btn btn-success m-3" href = "/add-system">Add New System</a>
         </div>
         <table class="table">
             <thead class="table-dark">

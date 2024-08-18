@@ -1,5 +1,6 @@
 package com.Bao.StigManager;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
@@ -34,10 +35,18 @@ public class WelcomeController {
         return "WelcomePage";
     }
 
-
     private String getUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authentication.getName();
+    }
+
+    @RequestMapping(value = "add-system", method = RequestMethod.GET)
+    private String newSystem(ModelMap modelMap) {
+        
+        SystemEntity newSystemEntity = new SystemEntity(0, getUsername(), "", LocalDate.now(), null);
+
+        modelMap.addAttribute("system", newSystemEntity);
+        return "NewSystemPage";
     }
 
 }

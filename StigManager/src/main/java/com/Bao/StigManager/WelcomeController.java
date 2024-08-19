@@ -3,6 +3,7 @@ package com.Bao.StigManager;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.Bao.StigManager.Repositories.SystemRepository;
 import com.Bao.StigManager.System.SystemEntity;
+
+import jakarta.validation.Valid;
 
 @Controller
 @SessionAttributes("name")
@@ -41,12 +44,22 @@ public class WelcomeController {
     }
 
     @RequestMapping(value = "add-system", method = RequestMethod.GET)
-    private String newSystem(ModelMap modelMap) {
+    private String newSystemGet(ModelMap modelMap) {
         
         SystemEntity newSystemEntity = new SystemEntity(0, getUsername(), "", LocalDate.now(), null);
 
         modelMap.addAttribute("system", newSystemEntity);
         return "NewSystemPage";
+    }
+
+    @RequestMapping(value = "add-system", method = RequestMethod.POST)
+    private String newSystemPost(ModelMap modelMap, @Valid SystemEntity systemEntity, BindingResult result) {
+
+        if (result.hasErrors()) return "/";
+        
+        System.out.println(systemEntity.toString());
+
+        return "redirect:/";
     }
 
 }

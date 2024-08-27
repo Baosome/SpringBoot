@@ -56,8 +56,9 @@ public class WelcomeController {
     private String newSystemPost(ModelMap modelMap, @Valid SystemEntity systemEntity, BindingResult result) {
 
         if (result.hasErrors()) return "/";
-        
+        systemEntity.setUsername(getUsername());
         System.out.println(systemEntity.toString());
+        systemRepository.save(systemEntity);
 
         return "redirect:/";
     }

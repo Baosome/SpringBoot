@@ -2,21 +2,17 @@ package com.Bao.StigManager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class StigManagerApplication {
+public class StigManagerApplication  extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
 		SpringApplication.run(StigManagerApplication.class, args);
 	}
-    /*
-     * TODOS:
-     *  Added user name [X]
-     *  Make user name persistance [X]
-     *  Make System list page [X]
-     *  Add list of system to user name [X]
-     *  Thus need to fix system entity to incude username as key [X]
-     *  Add For Each table in welcome jsp [X]
-     * 
-     */
+
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(StigManagerApplication.class);
+    }
 }

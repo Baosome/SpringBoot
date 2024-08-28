@@ -34,20 +34,13 @@
                         <td>${system.systemName}</td>
                         <td>${system.atoDate}</td>
                         <td>${system.eMassId}</td>
-                        <td><button type="button" class="btn btn-primary">Go</button></td>
+                        <td><a class="btn btn-primary" href="/system?id=${system.eMassId}">Manage</a></td>
                     </tr>
                 </c:forEach>
-                <!-- <tr>
-                    <td>1</td>
-                    <td>BAOLAN</td>
-                    <td>3/6/2024</td>
-                    <td>1234</td>
-                    <td><button type="button" class="btn btn-primary">Go</button></td>
-                </tr> -->
             </tbody>
           </table>
     </div>
     <script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-		<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
+	<script src="webjars/jquery/3.6.0/jquery.min.js"></script>
 </body>
 </html>

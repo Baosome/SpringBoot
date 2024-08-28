@@ -57,9 +57,8 @@ public class WelcomeController {
 
         if (result.hasErrors()) return "/";
         systemEntity.setUsername(getUsername());
-        System.out.println(systemEntity.toString());
         systemRepository.save(systemEntity);
-
+        System.out.println(systemEntity);
         return "redirect:/";
     }
 

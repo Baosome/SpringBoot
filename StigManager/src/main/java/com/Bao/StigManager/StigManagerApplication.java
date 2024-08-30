@@ -10,9 +10,12 @@ public class StigManagerApplication  extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
 		SpringApplication.run(StigManagerApplication.class, args);
+
 	}
 
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(StigManagerApplication.class);
     }
+
+
 }

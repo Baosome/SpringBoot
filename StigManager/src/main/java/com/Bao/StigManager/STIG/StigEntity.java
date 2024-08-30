@@ -15,11 +15,15 @@ public class StigEntity {
 
     private Integer Release;
 
-    public StigEntity(String name, Integer version, Integer release) {
+    public StigEntity(Integer systemID, String name, Integer version, Integer release) {
+        SystemID = systemID;
         Name = name;
-
         Version = version;
         Release = release;
+    }
+
+    public StigEntity() {
+
     }
 
     public String getName() {
@@ -46,11 +50,20 @@ public class StigEntity {
         Release = release;
     }
 
-    @Override
-    public String toString() {
-        return "StigEntity [SystemID=" + SystemID + ", Name=" + Name + ", Version=" + Version + ", Release=" + Release
-                + "]";
+    public Integer getSystemID() {
+        return SystemID;
     }
 
-
+    public void setSystemID(Integer systemID) {
+        SystemID = systemID;
+    }
+    @Override
+    public String toString() {
+        return "StigEntity{" +
+                "SystemID=" + SystemID +
+                ", Name='" + Name + '\'' +
+                ", Version=" + Version +
+                ", Release=" + Release +
+                '}';
+    }
 }

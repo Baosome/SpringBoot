@@ -30,6 +30,22 @@ public class ComponentEntity {
 
     }
 
+    public int getComponentId() {
+        return ComponentId;
+    }
+
+    public void setComponentId(int componentId) {
+        ComponentId = componentId;
+    }
+
+    public int geteMassId() {
+        return eMassId;
+    }
+
+    public void seteMassId(int eMassId) {
+        this.eMassId = eMassId;
+    }
+
     public String getComponentType() {
         return componentType;
     }

@@ -2,7 +2,6 @@ package com.Bao.StigManager.STIG;
 
 import com.Bao.StigManager.Component.ComponentEntity;
 import com.Bao.StigManager.Repositories.ComponentRepository;
-import com.Bao.StigManager.System.SystemEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +11,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.Bao.StigManager.Repositories.SystemRepository;
 
+import java.util.List;
+
 @Controller
 @SessionAttributes("name")
 public class StigController {
 
-    private final SystemRepository systemRepository;
-    private final ComponentRepository componentRepository;
+    private SystemRepository systemRepository;
+    private ComponentRepository componentRepository;
 
     public StigController(SystemRepository systemRepository, ComponentRepository componentRepository) {
         this.systemRepository = systemRepository;
@@ -28,11 +29,15 @@ public class StigController {
     public String showUpdateTodoPage(@RequestParam int id, ModelMap model) {
         var mySystem = systemRepository.findById(id).get();
         model.addAttribute("system", mySystem);
-        ComponentEntity component = componentRepository.findById(id).get();
-        model.addAttribute("Components", component);
 
-        System.out.println(mySystem);
-        System.out.println(component);
+        List<ComponentEntity> hardwares = componentRepository.findByeMassIdAndComponentType(id, "Hardware");
+        List<ComponentEntity> softwares = componentRepository.findByeMassIdAndComponentType(id, "Software");
+
+        model.addAttribute("Hardwares", hardwares);
+        model.addAttribute("Softwares", softwares);
+
+//        System.out.println(mySystem);
+//        System.out.println(components);
         return "SystemPage";
     }
 

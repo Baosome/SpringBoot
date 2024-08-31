@@ -1,5 +1,6 @@
 package com.Bao.StigManager.STIG;
 
+import com.Bao.StigManager.System.SystemEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,7 @@ import com.Bao.StigManager.Repositories.SystemRepository;
 @SessionAttributes("name")
 public class StigController {
 
-    private SystemRepository systemRepository;
+    private final SystemRepository systemRepository;
 
     public StigController(SystemRepository systemRepository) {
         this.systemRepository = systemRepository;
@@ -21,7 +22,9 @@ public class StigController {
 
     @RequestMapping(value = "system", method=RequestMethod.GET)
     public String showUpdateTodoPage(@RequestParam int id, ModelMap model) {
-        model.put("eMassID", id);
+        var mySystem = systemRepository.findById(id).get();
+        System.out.println(mySystem);
+        model.addAttribute("system", mySystem);
         return "SystemPage";
     }
 

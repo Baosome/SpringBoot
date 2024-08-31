@@ -6,17 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="JavaGaming" />
         <module name="WebApplication" />
+        <module name="JavaGaming (2)" />
         <module name="JavaGaming (1)" />
         <module name="StigManager" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JavaGaming" target="1.5" />
-      <module name="JavaGaming (1)" target="1.5" />
-      <module name="StigManager" target="1.5" />
-      <module name="WebApplication" target="1.5" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="JavaGaming (1)" options="-parameters" />
+      <module name="JavaGaming (2)" options="-parameters" />
+      <module name="StigManager" options="-parameters" />
+      <module name="WebApplication" options="-parameters" />
+    </option>
   </component>
 </project>

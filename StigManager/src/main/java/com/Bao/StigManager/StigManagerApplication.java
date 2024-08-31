@@ -16,6 +16,4 @@ public class StigManagerApplication  extends SpringBootServletInitializer{
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(StigManagerApplication.class);
     }
-
-
 }

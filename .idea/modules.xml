@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JavaGaming/JavaGaming.iml" filepath="$PROJECT_DIR$/JavaGaming/JavaGaming.iml" />
-      <module fileurl="file://$PROJECT_DIR$/JavaGaming2/JavaGaming (1).iml" filepath="$PROJECT_DIR$/JavaGaming2/JavaGaming (1).iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SpringBoot.iml" filepath="$PROJECT_DIR$/.idea/SpringBoot.iml" />
       <module fileurl="file://$PROJECT_DIR$/StigManager/StigManager.iml" filepath="$PROJECT_DIR$/StigManager/StigManager.iml" />
-      <module fileurl="file://$PROJECT_DIR$/WebApplication/WebApplication.iml" filepath="$PROJECT_DIR$/WebApplication/WebApplication.iml" />
     </modules>
   </component>
 </project>

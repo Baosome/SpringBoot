@@ -26,6 +26,24 @@
                 <h4>eMASS ID: </h4>
                 <p>${system.eMassId}</p>
             </div>
+            <div class="col-9 mt-3">
+                <h2>Hardware:</h2>
+                <ol class="list-group">
+                    <li class="list-group-item">
+                        <p class="d-inline-flex gap-1 w-100">
+                            <a class="btn btn-secondary w-100" data-bs-toggle="collapse"
+                               href="#HardwareDetails" role="button"
+                               aria-expanded="false" aria-controls="HardwareDetails">Toggle first element</a>
+                        </p>
+                        <div class="collapse multi-collapse" id="HardwareDetails">
+                            <div class="card card-body">
+                                Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                            </div>
+                        </div>
+
+                    </li>
+                </ol>
+            </div>
 
         </div>
 

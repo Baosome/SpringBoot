@@ -22,19 +22,14 @@ public class SystemEntity {
 
     private LocalDate  AtoDate;
 
-    @OneToMany
-    @JoinColumn(name = "id")
-    private List<StigEntity> Stigs;
-
     public SystemEntity() {
     }
 
-    public SystemEntity(int eMassId, String username, String systemName, LocalDate atoDate, List<StigEntity> stigs) {
+    public SystemEntity(int eMassId, String username, String systemName, LocalDate atoDate) {
         this.eMassId = eMassId;
         this.username = username;
         SystemName = systemName;
         AtoDate = atoDate;
-        Stigs = stigs;
     }
 
     public String getUsername() {
@@ -69,14 +64,6 @@ public class SystemEntity {
         this.eMassId = eMassId;
     }
     
-    public List<StigEntity> getStigs() {
-        return Stigs;
-    }
-
-    public void setStigs(List<StigEntity> stigs) {
-        Stigs = stigs;
-    }
-
     @Override
     public String toString() {
         return "SystemEntity [SystemName=" + SystemName + ", AtoDate=" + AtoDate + ", eMassId=" + eMassId + "]";

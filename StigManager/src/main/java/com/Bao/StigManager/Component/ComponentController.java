@@ -1,6 +1,5 @@
-package com.Bao.StigManager.STIG;
+package com.Bao.StigManager.Component;
 
-import com.Bao.StigManager.Component.ComponentEntity;
 import com.Bao.StigManager.Repositories.ComponentRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,12 +14,12 @@ import java.util.List;
 
 @Controller
 @SessionAttributes("name")
-public class StigController {
+public class ComponentController {
 
     private SystemRepository systemRepository;
     private ComponentRepository componentRepository;
 
-    public StigController(SystemRepository systemRepository, ComponentRepository componentRepository) {
+    public ComponentController(SystemRepository systemRepository, ComponentRepository componentRepository) {
         this.systemRepository = systemRepository;
         this.componentRepository = componentRepository;
     }

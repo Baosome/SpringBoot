@@ -1,28 +1,19 @@
 package com.Bao.StigManager.STIG;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
-@Entity
-public class StigEntity {
-
-    @Id
-    private Integer SystemID;
-
+public class Stig {
     private String Name;
 
     private Integer Version;
 
     private Integer Release;
 
-    public StigEntity(Integer systemID, String name, Integer version, Integer release) {
-        SystemID = systemID;
+    public Stig(String name, Integer version, Integer release) {
         Name = name;
         Version = version;
         Release = release;
     }
 
-    public StigEntity() {
+    public Stig() {
 
     }
 
@@ -50,18 +41,10 @@ public class StigEntity {
         Release = release;
     }
 
-    public Integer getSystemID() {
-        return SystemID;
-    }
-
-    public void setSystemID(Integer systemID) {
-        SystemID = systemID;
-    }
     @Override
     public String toString() {
-        return "StigEntity{" +
-                "SystemID=" + SystemID +
-                ", Name='" + Name + '\'' +
+        return "Stig{" +
+                "Name='" + Name + '\'' +
                 ", Version=" + Version +
                 ", Release=" + Release +
                 '}';

@@ -32,7 +32,7 @@
                         <h3>Hardware:</h3>
                     </div>
                     <div class="col-1 mb-1">
-                        <a href="" class="btn-sm btn-success">+</a>
+                        <a href="" class="btn btn-success">+</a>
                     </div>
                     <ol class="list-group">
                         <li class="list-group-item">
@@ -40,7 +40,7 @@
                                 <p class="d-inline-flex gap-1 w-100">
                                     <a class="btn btn-secondary w-100" data-bs-toggle="collapse"
                                        href="#${hardware.name}${hardware.componentId}" role="button"
-                                       aria-expanded="false" >${hardware.name} <span class="badge bg-primary">4</span></a>
+                                       aria-expanded="false" >${hardware.name} <span class="badge bg-primary">${Hardwares.size()}</span></a>
                                 </p>
                                 <div class="collapse multi-collapse mb-3" id="${hardware.name}${hardware.componentId}">
                                     <div class="card card-body">
@@ -66,7 +66,7 @@
                         <h3>Software:</h3>
                     </div>
                     <div class="col-1 mb-1">
-                        <a href="" class="btn-sm btn-success">+</a>
+                        <a href="" class="btn btn-success">+</a>
                     </div>
                     <ol class="list-group">
                         <li class="list-group-item">

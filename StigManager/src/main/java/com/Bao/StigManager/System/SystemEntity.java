@@ -1,12 +1,7 @@
 package com.Bao.StigManager.System;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 
 import java.time.LocalDate;
-import java.util.List;
-
-import com.Bao.StigManager.STIG.StigEntity;
 
 import jakarta.persistence.Entity;
 

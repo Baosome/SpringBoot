@@ -2,7 +2,6 @@ package com.Bao.StigManager.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 import java.time.LocalDate;
 

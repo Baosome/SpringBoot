@@ -1,19 +1,32 @@
 package com.Bao.StigManager.STIG;
 
-public class Stig {
-    private String Name;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-    private Integer Version;
+@Entity
+public class StigEntity {
 
-    private Integer Release;
+    @Id
+    int StigID;
 
-    public Stig(String name, Integer version, Integer release) {
+    int eMassId;
+    String ComponentName;
+    String Name;
+    Integer Version;
+    Integer Release;
+    boolean Temp;
+
+    public StigEntity(int stigID, int eMassId, String componentName, String name, Integer version, Integer release, boolean temp) {
+        StigID = stigID;
+        this.eMassId = eMassId;
+        ComponentName = componentName;
         Name = name;
         Version = version;
         Release = release;
+        Temp = temp;
     }
 
-    public Stig() {
+    public StigEntity() {
 
     }
 

@@ -1,6 +1,7 @@
 package com.Bao.StigManager.Component;
 
 import com.Bao.StigManager.Repositories.ComponentRepository;
+import com.Bao.StigManager.Repositories.StigsRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,10 +19,12 @@ public class ComponentController {
 
     private SystemRepository systemRepository;
     private ComponentRepository componentRepository;
+    private StigsRepository stigsRepository;
 
-    public ComponentController(SystemRepository systemRepository, ComponentRepository componentRepository) {
+    public ComponentController(SystemRepository systemRepository, ComponentRepository componentRepository, StigsRepository stigsRepository) {
         this.systemRepository = systemRepository;
         this.componentRepository = componentRepository;
+        this.stigsRepository = stigsRepository;
     }
 
     @RequestMapping(value = "system", method=RequestMethod.GET)

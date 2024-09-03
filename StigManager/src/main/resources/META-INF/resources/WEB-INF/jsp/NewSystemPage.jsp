@@ -23,9 +23,8 @@
                     <div class="col-md-8">
                         <fieldset class="form-floating mb-2">
                             <form:input path="SystemName" type="text" required="required" class="form-control"
-                                id="floatingInput" placeholder="SystemName" />
+                                id="floatingInput"/>
                             <form:label path="SystemName" for="floatingInput">System name</form:label>
-                            <form:errors path="SystemName" cssClass="text-warning" />
                         </fieldset>
                     </div>
                 </div>
@@ -33,17 +32,14 @@
                 <div class="row">
                     <div class="col-md-2">
                         <fieldset class="form-floating mb-2">
-                            <form:input path="eMassId" type="number" class="form-control" id="floatingInput"
-                                placeholder="eMass ID" />
+                            <form:input path="eMassId" type="number" class="form-control" id="floatingInput"/>
                             <form:label path="eMassId" for="floatingInput">eMass ID</form:label>
-                            <form:errors path="eMassId" cssClass="text-warning" />
                         </fieldset>
                     </div>
     
                     <fieldset class="m-2">
                         <form:label path="AtoDate">ATD Date: </form:label>
                         <form:input path="AtoDate" type="text" required="required" />
-                        <form:errors path="AtoDate" cssClass="text-warning" />
                     </fieldset>
                 </div>
     

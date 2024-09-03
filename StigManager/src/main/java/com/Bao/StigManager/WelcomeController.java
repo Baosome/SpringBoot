@@ -46,7 +46,7 @@ public class WelcomeController {
     @RequestMapping(value = "add-system", method = RequestMethod.GET)
     private String newSystemGet(ModelMap modelMap) {
         
-        SystemEntity newSystemEntity = new SystemEntity(0, getUsername(), "", LocalDate.now());
+        SystemEntity newSystemEntity = new SystemEntity(0, getUsername(), "", null);
 
         modelMap.addAttribute("system", newSystemEntity);
         return "NewSystemPage";

@@ -2,6 +2,7 @@ package com.Bao.StigManager.Component;
 
 import com.Bao.StigManager.Repositories.ComponentRepository;
 import com.Bao.StigManager.Repositories.StigsRepository;
+import com.Bao.StigManager.STIG.StigEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,9 +35,11 @@ public class ComponentController {
 
         List<ComponentEntity> hardwares = componentRepository.findByeMassIdAndComponentType(id, "Hardware");
         List<ComponentEntity> softwares = componentRepository.findByeMassIdAndComponentType(id, "Software");
+        List<StigEntity> stigs = stigsRepository.findByEMassId(0);
 
         model.addAttribute("Hardwares", hardwares);
         model.addAttribute("Softwares", softwares);
+        model.addAttribute("Stigs", stigs);
 
 //        System.out.println(mySystem);
 //        System.out.println(components);

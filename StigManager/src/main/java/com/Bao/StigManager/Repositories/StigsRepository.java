@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface StigsRepository extends JpaRepository<StigEntity, Integer>{
-
+    public List<StigEntity> findByEMassId(int id);
 }

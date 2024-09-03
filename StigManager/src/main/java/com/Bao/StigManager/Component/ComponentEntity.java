@@ -29,6 +29,10 @@ public class ComponentEntity {
 
     }
 
+    public String getRef() {
+        return getName().replaceAll("\\s", "") + getComponentId();
+    }
+
     public int getComponentId() {
         return ComponentId;
     }

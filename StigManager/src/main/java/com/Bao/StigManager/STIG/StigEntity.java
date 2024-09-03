@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 public class StigEntity {
 
     @Id
-    int StigID;
+    int StigId;
 
     int eMassId;
     String ComponentName;
@@ -17,7 +17,7 @@ public class StigEntity {
     boolean Temp;
 
     public StigEntity(int stigID, int eMassId, String componentName, String name, Integer version, Integer release, boolean temp) {
-        StigID = stigID;
+        StigId = stigID;
         this.eMassId = eMassId;
         ComponentName = componentName;
         Name = name;

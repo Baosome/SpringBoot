@@ -3,6 +3,8 @@ package com.Bao.StigManager;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,6 +24,8 @@ import jakarta.validation.Valid;
 public class WelcomeController {
 
     private SystemRepository systemRepository;
+
+    Logger logger = LoggerFactory.getLogger(WelcomeController.class);
 
     public WelcomeController(SystemRepository systemRepository) {
         this.systemRepository = systemRepository;
@@ -58,7 +62,7 @@ public class WelcomeController {
         if (result.hasErrors()) return "/";
         systemEntity.setUsername(getUsername());
         systemRepository.save(systemEntity);
-        System.out.println(systemEntity);
+        logger.info(systemEntity.toString());
         return "redirect:/";
     }
 

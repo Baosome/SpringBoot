@@ -4,6 +4,9 @@ import com.Bao.StigManager.Repositories.ComponentRepository;
 import com.Bao.StigManager.Repositories.StigsRepository;
 import com.Bao.StigManager.STIG.StigEntity;
 import jakarta.validation.Valid;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -23,6 +26,8 @@ public class ComponentController {
     private SystemRepository systemRepository;
     private ComponentRepository componentRepository;
     private StigsRepository stigsRepository;
+
+    Logger logger = LoggerFactory.getLogger(ComponentController.class);
 
     public ComponentController(SystemRepository systemRepository, ComponentRepository componentRepository, StigsRepository stigsRepository) {
         this.systemRepository = systemRepository;
@@ -60,7 +65,8 @@ public class ComponentController {
         int numOfComponents = (int) componentRepository.count() + 1;
         component.setComponentId(numOfComponents);
         component.seteMassId(id);
-        System.out.println(component);
+        componentRepository.save(component);
+        logger.info(component.toString());
         return "redirect:/system?id=" + id;
     }
 

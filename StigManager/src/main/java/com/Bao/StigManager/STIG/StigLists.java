@@ -1,25 +1,38 @@
 package com.Bao.StigManager.STIG;
 
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.List;
 
-@Component
 public class StigLists {
 
-    StigEntity myStig;
     List<StigEntity> myStigList;
 
-    public StigLists() {
+    String ComponentName;
+
+    public StigLists(List<StigEntity> myStigList, String componentName) {
+        this.myStigList = myStigList;
     }
 
-
-    public void addToList(StigEntity myStig){
-        myStigList.add(myStig);
-    }
-
-    public List<StigEntity> getStigList(){
+    public List<StigEntity> getMyStigList() {
         return myStigList;
+    }
+
+    public String getComponentName() {
+        return ComponentName;
+    }
+
+    public void setComponentName(String componentName) {
+        ComponentName = componentName;
+    }
+
+    public void setMyStigList(List<StigEntity> myStigList) {
+        this.myStigList = myStigList;
+    }
+
+    @Override
+    public String toString() {
+        return "StigLists{" +
+                "myStigList=" + myStigList +
+                ", ComponentName='" + ComponentName + '\'' +
+                '}';
     }
 }

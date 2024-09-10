@@ -14,16 +14,14 @@ public class StigEntity {
     String Name;
     Integer Version;
     Integer Release;
-    boolean Temp;
 
-    public StigEntity(int stigID, int eMassId, String componentName, String name, Integer version, Integer release, boolean temp) {
+    public StigEntity(int stigID, int eMassId, String componentName, String name, Integer version, Integer release) {
         StigId = stigID;
         this.eMassId = eMassId;
         ComponentName = componentName;
         Name = name;
         Version = version;
         Release = release;
-        Temp = temp;
     }
 
     public StigEntity() {
@@ -62,10 +60,29 @@ public class StigEntity {
         Release = release;
     }
 
+    public void setStigId(int stigId) {
+        StigId = stigId;
+    }
+
+    public void seteMassId(int eMassId) {
+        this.eMassId = eMassId;
+    }
+
+    public String getComponentName() {
+        return ComponentName;
+    }
+
+    public void setComponentName(String componentName) {
+        ComponentName = componentName;
+    }
+
     @Override
     public String toString() {
-        return "Stig{" +
-                "Name='" + Name + '\'' +
+        return "StigEntity{" +
+                "StigId=" + StigId +
+                ", eMassId=" + eMassId +
+                ", ComponentName='" + ComponentName + '\'' +
+                ", Name='" + Name + '\'' +
                 ", Version=" + Version +
                 ", Release=" + Release +
                 '}';

@@ -23,16 +23,14 @@
                                 <div class="form-check">
                                     <form:radiobutton path="componentType" class="form-check-input"
                                                       name="flexRadioDefault" id="ComponentType" value="Hardware"/>
-                                    <form:label path="componentType" class="form-check-label" >
-                                        Hardware
-                                    </form:label>
+                                    <form:label path="componentType" class="form-check-label">Hardware</form:label>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-check">
                                     <form:radiobutton path="componentType" class="form-check-input"
                                                       name="flexRadioDefault" id="ComponentType" value="Software"/>
-                                    <form:label path="componentType" class="form-check-label"> Software</form:label>
+                                    <form:label path="componentType" class="form-check-label">Software</form:label>
                                 </div>
                             </div>
                         </div>

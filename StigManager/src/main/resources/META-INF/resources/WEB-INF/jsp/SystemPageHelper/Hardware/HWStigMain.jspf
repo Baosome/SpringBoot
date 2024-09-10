@@ -1,6 +1,7 @@
 <div class="col-1">
     <button class="text-white fw-bold bg-success" data-bs-toggle="modal"
-            data-bs-target="#${hardware.getRef()}2">Add</button>
+            data-bs-target="#${hardware.getRef()}2">Add
+    </button>
     <div class="modal" id="${hardware.getRef()}2" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -8,24 +9,27 @@
                     <h5 class="modal-title">Choose your STIGs</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <c:forEach items="${Stigs}" var="stig">
-                            <div class="col-6">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input">
-                                    <label for="flexCheckDefault" class="form-check-label">${stig.name} V${stig.version}
-                                        R${stig.release}
-                                    </label>
-                                </div>
-                            </div>
-                        </c:forEach>
+                <form:form method="post" modelAttribute="StigList">
+                    <div class="modal-body">
+                        <div class="row">
+                            <c:forEach items="${Stigs}" var="stig">
+                                    <div class="col-6">
+                                        <div class="form-check">
+                                            <form:checkbox path="myStigList" class="form-check-input"
+                                                           name="flexRadioDefault" id="myStig" value="${stig.stigId}"/>
+                                            <form:label path="myStigList" class="form-check-label">${stig.name}
+                                                V${stig.version}R${stig.release}</form:label>
+
+                                            <form:hidden path="componentName" value="${hardware.name}"/>
+                                        </div>
+                                    </div>
+                            </c:forEach>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        <input type="submit" value="Save Changes" class="btn btn-primary" />
+                    </div>
+                </form:form>
             </div>
         </div>
     </div>

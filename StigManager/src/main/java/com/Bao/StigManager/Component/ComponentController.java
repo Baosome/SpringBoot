@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.Bao.StigManager.Repositories.SystemRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,7 +27,7 @@ public class ComponentController {
     private SystemRepository systemRepository;
     private ComponentRepository componentRepository;
     private StigsRepository stigsRepository;
-    private StigLists Stiglist;
+
 
     Logger logger = LoggerFactory.getLogger(ComponentController.class);
 
@@ -51,12 +52,14 @@ public class ComponentController {
         model.addAttribute("Hardwares", hardwares);
         model.addAttribute("Softwares", softwares);
         model.addAttribute("Stigs", stigs);
-        model.addAttribute("StigList", Stiglist);
+
 
         //Set up classes for POST
         ComponentEntity componentEntity = new ComponentEntity(0, 0,
                 "", "", "", null);
         model.addAttribute("component", componentEntity);
+
+        model.addAttribute("StigList", new StigLists(stigs, ""));
 
         return "SystemPage";
     }
@@ -70,10 +73,20 @@ public class ComponentController {
     */
 
     @RequestMapping(value = "system", method=RequestMethod.POST)
-    public String UpdateComponent(@RequestParam int id, @Valid ComponentEntity component, BindingResult bindingResult) {
+    public String UpdateComponent(@RequestParam int id, @Valid ComponentEntity component, @Valid StigLists stiglist, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "/";
 
-        if (component != null) {
+
+        if (!stiglist.getMyStigList().isEmpty()) {
+            logger.info(stiglist.toString());
+            for (StigEntity stig : stiglist.getMyStigList()) {
+                int numOfStigs = (int) stigsRepository.count() +1;
+                StigEntity newStig = new StigEntity(numOfStigs, id, stiglist.getComponentName(), stig.getName(), stig.getVersion(), stig.getRelease());
+                logger.info(newStig.toString());
+            }
+        }
+
+        if (component.getName() != null) {
             int numOfComponents = (int) componentRepository.count() + 1;
             component.setComponentId(numOfComponents);
             component.seteMassId(id);

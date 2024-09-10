@@ -29,6 +29,8 @@ public class ComponentController {
     private ComponentRepository componentRepository;
     private StigsRepository stigsRepository;
 
+    Logger logger = LoggerFactory.getLogger(ComponentController.class);
+
     public ComponentController(SystemRepository systemRepository, ComponentRepository componentRepository, StigsRepository stigsRepository) {
         this.systemRepository = systemRepository;
         this.componentRepository = componentRepository;
@@ -46,19 +48,10 @@ public class ComponentController {
         List<ComponentEntity> softwares = componentRepository.findByeMassIdAndComponentType(id, "Software");
         List<StigEntity> stigs = stigsRepository.findByEMassId(0);
 
-        //Stigs model for radio buttons
-        Map<String, Boolean> StigMap = new HashMap<String, Boolean>();
-        for (StigEntity stig : stigs) {
-            if (stig.geteMassId() == 0) {
-                StigMap.put(stig.getStigId() + stig.getName(), false);
-            }
-        }
-
         //Add list to jsp
         model.addAttribute("Hardwares", hardwares);
         model.addAttribute("Softwares", softwares);
         model.addAttribute("Stigs", stigs);
-        model.addAttribute("StigMap", StigMap);
 
         //Set up classes for POST
         ComponentEntity componentEntity = new ComponentEntity(0, 0,
@@ -69,32 +62,8 @@ public class ComponentController {
     }
 
     @RequestMapping(value = "system", method=RequestMethod.POST)
-    public String UpdateComponent(ModelMap model,@RequestParam int id, @Valid ComponentEntity component,
-                                  @Valid HashMap<String, Integer> StigsMap, BindingResult bindingResult) {
-
+    public String UpdateComponent(ModelMap model,@RequestParam int id, @Valid ComponentEntity component, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "/";
-
-        if (component != null) {
-            int numOfComponents = (int) componentRepository.count() + 1;
-            component.setComponentId(numOfComponents);
-            component.seteMassId(id);
-            componentRepository.save(component);
-            System.out.println(component);
-        }
-
-        /*
-            TODO: Add Stig map form to jsp
-            Post for stig map
-            Match with stig id and stig name
-            Update page to show which stig is selected
-            Update stig counter
-         */
-
-        if (StigsMap != null) {
-            System.out.println(StigsMap);
-        }
-
-
         int numOfComponents = (int) componentRepository.count() + 1;
         component.setComponentId(numOfComponents);
         component.seteMassId(id);

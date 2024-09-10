@@ -3,8 +3,8 @@ package com.Bao.StigManager.Component;
 import com.Bao.StigManager.Repositories.ComponentRepository;
 import com.Bao.StigManager.Repositories.StigsRepository;
 import com.Bao.StigManager.STIG.StigEntity;
+import com.Bao.StigManager.STIG.StigLists;
 import jakarta.validation.Valid;
-import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.Bao.StigManager.Repositories.SystemRepository;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @SessionAttributes("name")
@@ -28,6 +26,7 @@ public class ComponentController {
     private SystemRepository systemRepository;
     private ComponentRepository componentRepository;
     private StigsRepository stigsRepository;
+    private StigLists Stiglist;
 
     Logger logger = LoggerFactory.getLogger(ComponentController.class);
 
@@ -61,14 +60,25 @@ public class ComponentController {
         return "SystemPage";
     }
 
+    /*
+        TODO: Add Stig map form to jsp Post for stig map
+        Match with stig id and stig name
+        Update page to show which stig is selected
+        Update stig counter
+    */
+
     @RequestMapping(value = "system", method=RequestMethod.POST)
-    public String UpdateComponent(ModelMap model,@RequestParam int id, @Valid ComponentEntity component, BindingResult bindingResult) {
+    public String UpdateComponent(@RequestParam int id, @Valid ComponentEntity component, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "/";
-        int numOfComponents = (int) componentRepository.count() + 1;
-        component.setComponentId(numOfComponents);
-        component.seteMassId(id);
-        componentRepository.save(component);
-        logger.info(component.toString());
+
+        if (component != null) {
+            int numOfComponents = (int) componentRepository.count() + 1;
+            component.setComponentId(numOfComponents);
+            component.seteMassId(id);
+            componentRepository.save(component);
+            logger.info(component.toString());
+        }
+
         return "redirect:/system?id=" + id;
     }
 

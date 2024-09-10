@@ -47,12 +47,13 @@ public class ComponentController {
         List<ComponentEntity> hardwares = componentRepository.findByeMassIdAndComponentType(id, "Hardware");
         List<ComponentEntity> softwares = componentRepository.findByeMassIdAndComponentType(id, "Software");
         List<StigEntity> stigs = stigsRepository.findByEMassId(0);
+        List<StigEntity> myStigs = stigsRepository.findByEMassId(id);
 
         //Add list to jsp
         model.addAttribute("Hardwares", hardwares);
         model.addAttribute("Softwares", softwares);
         model.addAttribute("Stigs", stigs);
-
+        model.addAttribute("myStigs", myStigs);
 
         //Set up classes for POST
         ComponentEntity componentEntity = new ComponentEntity(0, 0,
@@ -83,6 +84,7 @@ public class ComponentController {
                 int numOfStigs = (int) stigsRepository.count() +1;
                 StigEntity newStig = new StigEntity(numOfStigs, id, stiglist.getComponentName(), stig.getName(), stig.getVersion(), stig.getRelease());
                 logger.info(newStig.toString());
+                stigsRepository.save(newStig);
             }
         }
 

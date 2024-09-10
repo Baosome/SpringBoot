@@ -30,6 +30,14 @@ public class StigEntity {
 
     }
 
+    public int getStigId() {
+        return StigId;
+    }
+
+    public int geteMassId() {
+        return eMassId;
+    }
+
     public String getName() {
         return Name;
     }

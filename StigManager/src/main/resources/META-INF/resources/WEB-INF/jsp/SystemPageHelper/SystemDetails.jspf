@@ -1,0 +1,8 @@
+<div class="col mt-4">
+    <h4>System Name: </h4>
+    <p>${system.systemName}</p>
+    <h4>ATO Date: </h4>
+    <p>${system.atoDate}</p>
+    <h4>eMASS ID: </h4>
+    <p>${system.eMassId}</p>
+</div>

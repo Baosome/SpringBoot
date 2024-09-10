@@ -51,6 +51,7 @@ public class ComponentController {
         model.addAttribute("Hardwares", hardwares);
         model.addAttribute("Softwares", softwares);
         model.addAttribute("Stigs", stigs);
+        model.addAttribute("StigList", Stiglist);
 
         //Set up classes for POST
         ComponentEntity componentEntity = new ComponentEntity(0, 0,
@@ -61,10 +62,11 @@ public class ComponentController {
     }
 
     /*
-        TODO: Add Stig map form to jsp Post for stig map
-        Match with stig id and stig name
-        Update page to show which stig is selected
-        Update stig counter
+        TODO:
+        [x] Add Stig map form to jsp Post for stig map
+        [] Match with stig id and stig name
+        [] Update page to show which stig is selected
+        [] Update stig counter
     */
 
     @RequestMapping(value = "system", method=RequestMethod.POST)

@@ -1,0 +1,19 @@
+<ol class="list-group">
+    <li class="list-group-item">
+        <c:forEach items="${Softwares}" var="software">
+            <p class="d-inline-flex gap-1 w-100">
+                <a class="btn btn-secondary w-100" data-bs-toggle="collapse"
+                   href="#${software.getRef()}" role="button"
+                   aria-expanded="false">${software.name} <span class="badge bg-primary">4</span></a>
+            </p>
+            <div class="collapse multi-collapse mb-3" id="${software.getRef()}">
+                <div class="card card-body">
+                    <div class="row">
+                        <%@ include file="SWStigBadge.jspf" %>
+                        <%@ include file="SWStigMain.jspf" %>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+    </li>
+</ol>

@@ -9,13 +9,17 @@ import java.util.List;
 public class StigLists {
 
     StigEntity myStig;
+    List<StigEntity> myStigList;
 
     public StigLists() {
     }
 
-    List<StigEntity> StigList = new ArrayList<StigEntity>();
 
     public void addToList(StigEntity myStig){
-        StigList.add(myStig);
+        myStigList.add(myStig);
+    }
+
+    public List<StigEntity> getStigList(){
+        return myStigList;
     }
 }

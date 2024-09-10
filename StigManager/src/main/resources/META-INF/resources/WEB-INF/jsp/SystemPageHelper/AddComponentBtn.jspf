@@ -1,0 +1,56 @@
+<div class="col-2 mb-1">
+    <button class="text-white fw-bold bg-success" data-bs-toggle="modal"
+            data-bs-target="#AddComponent">Add Component</button>
+
+    <div class="modal" id="AddComponent" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Fill out hardware info:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form:form method="post" modelAttribute="component">
+                        <fieldset class="form-floating mb-2">
+                            <form:input path="name" type="text" required="required" class="form-control"
+                                        id="floatingInput"/>
+                            <form:label path="name" for="floatingInput">Component name</form:label>
+                        </fieldset>
+                        <hr>
+                        <h2 class="fs-6">Choose Component Type:</h2>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-check">
+                                    <form:radiobutton path="componentType" class="form-check-input"
+                                                      name="flexRadioDefault" id="ComponentType" value="Hardware"/>
+                                    <form:label path="componentType" class="form-check-label" >
+                                        Hardware
+                                    </form:label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <form:radiobutton path="componentType" class="form-check-input"
+                                                      name="flexRadioDefault" id="ComponentType" value="Software"/>
+                                    <form:label path="componentType" class="form-check-label"> Software</form:label>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <fieldset class="form-floating mb-2">
+                            <form:input path="version" type="text" class="form-control" id="floatingInput"/>
+                            <form:label path="version" for="floatingInput">Version</form:label>
+                        </fieldset>
+                        <hr>
+                        <fieldset class="m-2">
+                            <form:label path="ldaDate">LDA Date:</form:label>
+                            <form:input path="ldaDate" type="text" required="required"/>
+                        </fieldset>
+                        <hr>
+                        <input type="submit" value="Save Changes" class="btn btn-primary" />
+                    </form:form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

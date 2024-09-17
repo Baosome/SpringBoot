@@ -19,13 +19,12 @@
                                                            name="flexRadioDefault" id="myStig" value="${stig.stigId}"/>
                                             <form:label path="myStigList" class="form-check-label">${stig.name}
                                                 V${stig.version}R${stig.release}</form:label>
-
-                                            <form:hidden path="componentName" value="${hardware.name}"/>
                                         </div>
                                     </div>
                             </c:forEach>
                         </div>
                     </div>
+                    <form:hidden path="componentName" value="${hardware.name}"/>
                     <div class="modal-footer">
                         <input type="submit" value="Save Changes" class="btn btn-primary" />
                     </div>

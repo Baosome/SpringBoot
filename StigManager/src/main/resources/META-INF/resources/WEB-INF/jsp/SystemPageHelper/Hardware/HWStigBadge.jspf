@@ -1,7 +1,11 @@
 <div class="col">
     <div class="container-fluid">
         <c:forEach items="${myStigs}" var="myStig">
-            <span class="badge bg-primary p-2">${myStig.getName()} V${myStig.getVersion()} R${myStig.getRelease()}</span>
+            <c:choose>
+                <c:when test="${myStig.getComponentName() == hardware.name}">
+                    <span class="badge bg-primary p-2">${myStig.getName()} V${myStig.getVersion()} R${myStig.getRelease()}</span>
+                </c:when>
+            </c:choose>
         </c:forEach>
     </div>
 </div>

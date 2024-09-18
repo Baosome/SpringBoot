@@ -24,9 +24,9 @@ import java.util.List;
 @SessionAttributes("name")
 public class ComponentController {
 
-    private SystemRepository systemRepository;
-    private ComponentRepository componentRepository;
-    private StigsRepository stigsRepository;
+    private final SystemRepository systemRepository;
+    private final ComponentRepository componentRepository;
+    private final StigsRepository stigsRepository;
 
 
     Logger logger = LoggerFactory.getLogger(ComponentController.class);
@@ -65,14 +65,6 @@ public class ComponentController {
         return "SystemPage";
     }
 
-    /*
-        TODO:
-        [x] Add Stig map form to jsp Post for stig map
-        [] Match with stig id and stig name
-        [] Update page to show which stig is selected
-        [] Update stig counter
-    */
-
     @RequestMapping(value = "system", method=RequestMethod.POST)
     public String UpdateComponent(@RequestParam int id, @Valid ComponentEntity component, @Valid StigLists stiglist, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "/";
@@ -87,6 +79,11 @@ public class ComponentController {
                 stigsRepository.save(newStig);
             }
         }
+        /*
+            TODO:
+            [] Fix component name concat issues
+            [] Badges now shows up for all components when added
+        */
 
         if (component.getName() != null) {
             int numOfComponents = (int) componentRepository.count() + 1;

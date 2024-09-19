@@ -48,12 +48,14 @@ public class ComponentController {
         List<ComponentEntity> softwares = componentRepository.findByeMassIdAndComponentType(id, "Software");
         List<StigEntity> stigs = stigsRepository.findByEMassId(0);
         List<StigEntity> myStigs = stigsRepository.findByEMassId(id);
+        StigLists SystemStigs = new StigLists(myStigs, "");
+
 
         //Add list to jsp
         model.addAttribute("Hardwares", hardwares);
         model.addAttribute("Softwares", softwares);
         model.addAttribute("Stigs", stigs);
-        model.addAttribute("myStigs", myStigs);
+        model.addAttribute("myStigs", SystemStigs);
 
         //Set up classes for POST
         ComponentEntity componentEntity = new ComponentEntity(0, 0,
@@ -69,20 +71,20 @@ public class ComponentController {
     public String UpdateComponent(@RequestParam int id, @Valid ComponentEntity component, @Valid StigLists stiglist, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "/";
 
-
         if (!stiglist.getMyStigList().isEmpty()) {
-            logger.info(stiglist.toString());
+            logger.info(stiglist.toString()); // What is returned
             for (StigEntity stig : stiglist.getMyStigList()) {
                 int numOfStigs = (int) stigsRepository.count() +1;
                 StigEntity newStig = new StigEntity(numOfStigs, id, stiglist.getComponentName(), stig.getName(), stig.getVersion(), stig.getRelease());
-                logger.info(newStig.toString());
+//                logger.info(newStig.toString());
                 stigsRepository.save(newStig);
             }
         }
         /*
             TODO:
-            [] Fix component name concat issues
-            [] Badges now shows up for all components when added
+            [X] Fix component name concat issues
+            [X] Badges now shows up for all components when added
+            [X] Counter for badge
         */
 
         if (component.getName() != null) {
@@ -90,7 +92,7 @@ public class ComponentController {
             component.setComponentId(numOfComponents);
             component.seteMassId(id);
             componentRepository.save(component);
-            logger.info(component.toString());
+//            logger.info(component.toString());
         }
 
         return "redirect:/system?id=" + id;

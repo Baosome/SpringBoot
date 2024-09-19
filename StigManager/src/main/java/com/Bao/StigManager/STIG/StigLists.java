@@ -1,6 +1,10 @@
 package com.Bao.StigManager.STIG;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+
 import java.util.List;
+
 
 public class StigLists {
 
@@ -10,6 +14,16 @@ public class StigLists {
 
     public StigLists(List<StigEntity> myStigList, String componentName) {
         this.myStigList = myStigList;
+    }
+
+    public int getSizeByComponentName(String componentName) {
+        int count = 0;
+        for (StigEntity stig : myStigList) {
+            if (stig.getComponentName().equals(componentName)) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public List<StigEntity> getMyStigList() {

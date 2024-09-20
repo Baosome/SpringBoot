@@ -50,7 +50,6 @@ public class ComponentController {
         List<StigEntity> myStigs = stigsRepository.findByEMassId(id);
         StigLists SystemStigs = new StigLists(myStigs, "");
 
-
         //Add list to jsp
         model.addAttribute("Hardwares", hardwares);
         model.addAttribute("Softwares", softwares);
@@ -71,28 +70,22 @@ public class ComponentController {
     public String UpdateComponent(@RequestParam int id, @Valid ComponentEntity component, @Valid StigLists stiglist, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "/";
 
-        if (!stiglist.getMyStigList().isEmpty()) {
+        if (stiglist.getMyStigList()!= null && !stiglist.getMyStigList().isEmpty()) {
             logger.info(stiglist.toString()); // What is returned
             for (StigEntity stig : stiglist.getMyStigList()) {
                 int numOfStigs = (int) stigsRepository.count() +1;
                 StigEntity newStig = new StigEntity(numOfStigs, id, stiglist.getComponentName(), stig.getName(), stig.getVersion(), stig.getRelease());
-//                logger.info(newStig.toString());
+//              logger.info(newStig.toString());
                 stigsRepository.save(newStig);
             }
         }
-        /*
-            TODO:
-            [X] Fix component name concat issues
-            [X] Badges now shows up for all components when added
-            [X] Counter for badge
-        */
 
         if (component.getName() != null) {
             int numOfComponents = (int) componentRepository.count() + 1;
             component.setComponentId(numOfComponents);
             component.seteMassId(id);
             componentRepository.save(component);
-//            logger.info(component.toString());
+//          logger.info(component.toString());
         }
 
         return "redirect:/system?id=" + id;

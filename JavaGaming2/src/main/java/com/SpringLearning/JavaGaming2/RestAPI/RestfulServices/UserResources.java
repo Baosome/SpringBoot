@@ -1,10 +1,13 @@
 package com.SpringLearning.JavaGaming2.RestAPI.RestfulServices;
 
+import com.SpringLearning.JavaGaming2.RestAPI.RestfulServices.Exceptions.UserNotFoundException;
 import com.SpringLearning.JavaGaming2.RestAPI.RestfulServices.User.User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -17,13 +20,34 @@ public class UserResources {
     }
 
     @GetMapping("/users")
-    List<User> retrieveAllUsers(){
+    List<User> RetrieveAllUsers(){
         return userDaoService.getAllUsers();
     }
 
     @GetMapping("/users/{id}")
-    User retrieveAllUsers(@PathVariable int id){
-        return userDaoService.getUser(id);
+    User RetrieveOneUsers(@PathVariable int id){
+        User user = userDaoService.getUser(id);
+        if (user == null) throw new UserNotFoundException("id: " + id);
+        return user;
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<User> CreateUser(@Valid @RequestBody User user){
+        userDaoService.Save(user);
+                            // Servlet current request can return /users
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(user.getId())
+                .toUri();
+
+        // Return location of newly created user
+        return ResponseEntity.created(location).build();
+    }
+
+    @DeleteMapping("/users/{id}")
+    void DeleteUsers(@PathVariable int id){
+        userDaoService.DeleteById(id);
     }
 
 }

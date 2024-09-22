@@ -1,11 +1,18 @@
 package com.SpringLearning.JavaGaming2.RestAPI.RestfulServices.User;
 
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 
 public class User {
 
     private Integer id;
+
+    @Size(min = 2, max = 100)
     private String name;
+
+    @Past
     private LocalDate birthday;
 
     public User(Integer id, String name, LocalDate birthday) {

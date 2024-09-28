@@ -10,6 +10,18 @@
     border-width: 5px;
 }
 
+.MinusCounterBtn {
+    font-size:15px;
+    background-color: #e2680b;
+    width:100px;
+    margin:10px;
+    color:white;
+    padding:15px;
+    border-radius:20px;
+    border-color:black;
+    border-width: 5px;
+}
+
 .count {
     font-size: 150px;
     padding: 20px;

@@ -6,9 +6,13 @@ function App() {
   return (
     <div className="App">
       My Todo Application
-        <Counter></Counter>
+        <Counter/>
+        {/*Default Prop*/}
+        <Counter by={2}/>
+        <Counter by={5}/>
     </div>
   );
 }
+
 
 export default App;

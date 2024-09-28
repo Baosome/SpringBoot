@@ -1,12 +1,12 @@
 import './App.css';
 
-import ComponentMain from './components/ComponentTests/ComponentMain'
+import Counter from "./components/Counter/Counter";
 
 function App() {
   return (
     <div className="App">
       My Todo Application
-        <ComponentMain></ComponentMain>
+        <Counter></Counter>
     </div>
   );
 }

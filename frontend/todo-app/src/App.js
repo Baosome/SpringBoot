@@ -6,10 +6,7 @@ function App() {
   return (
     <div className="App">
       My Todo Application
-        <Counter/>
-        {/*Default Prop*/}
-        <Counter by={2}/>
-        <Counter by={5}/>
+      <Counter></Counter>
     </div>
   );
 }

@@ -2,8 +2,8 @@ import './Counter.css'
 import {useState} from "react";
 import PropTypes from "prop-types";
 
-export default function Counter({by}) {
-
+// Parameters have to be the same name
+export default function CounterButton({by, parentFunc, parentFunc2}) {
     // const buttonStyle = {
     //     fontSize:"15px",
     //     backgroundColor: "#0005ab",
@@ -21,11 +21,13 @@ export default function Counter({by}) {
     function incrementCounter() {
         // state[1](state[0] +1)
         func(count+by)
+        parentFunc(by);
         console.log(count)
     }
 
     function decreaseCounter() {
         func(count-by)
+        parentFunc2(by);
         console.log(count)
     }
 
@@ -41,10 +43,10 @@ export default function Counter({by}) {
     )
 }
 
-Counter.propType = {
+CounterButton.propType = {
     by: PropTypes.number
 }
 
-Counter.defaultProps = {
+CounterButton.defaultProps = {
     by: 1
 }

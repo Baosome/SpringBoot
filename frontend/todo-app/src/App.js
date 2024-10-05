@@ -6,7 +6,6 @@ import TodoApp from "./Components2/TodoApp"
 function App() {
   return (
     <div className="App">
-        My Todo Application
         {/*<Counter></Counter>*/}
         <TodoApp></TodoApp>
     </div>

@@ -1,19 +1,25 @@
 import "./TodoApp.css"
-import {BrowserRouter, Routes, Route, useNavigate, useParams} from "react-router-dom";
-import {useState} from "react";
+import {BrowserRouter, Routes, Route, useNavigate, useParams, Link} from "react-router-dom";
+import React, {useState} from "react";
 
 export default function TodoApp(){
     return (
         <div className="TodoApp">
+            <HeaderComponent></HeaderComponent>
+
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<LoginComponent/>}></Route>
-                    <Route path="/login" element={<LoginComponent/>}></Route>
-                    <Route path="/welcome/:username" element={<WelcomeComponent/>}></Route>
-                    <Route path="*" element={<ErrorComponent/>}></Route>
+                    <Route path="/" element={<LoginComponent/>}/>
+                    <Route path="/login" element={<LoginComponent/>}/>
+                    <Route path="/welcome/:username" element={<WelcomeComponent/>}/>
+                    <Route path="todos" element={<ListTodoComponent/>}/>
+                    <Route path="logout" element={<LogoutComponent/>}/>
 
+                    <Route path="*" element={<ErrorComponent/>}/>
                 </Routes>
             </BrowserRouter>
+
+            <FooterComponent></FooterComponent>
             {/*<LoginComponent></LoginComponent>*/}
             {/*<WelcomeComponent></WelcomeComponent>*/}
         </div>
@@ -96,6 +102,8 @@ function WelcomeComponent(){
     return  (
         <div className="Welcome">
             <h1>Welcome! {username}</h1>
+            <h2>Your <Link to="/todos">todos</Link>
+            </h2>
         </div>
     )
 }
@@ -105,6 +113,77 @@ function ErrorComponent(){
         <div className="Error">
             <h1>Error!</h1>
             Wrong Page
+        </div>
+    )
+}
+
+function ListTodoComponent(){
+
+    const today = new Date()
+    const TargetDate = new Date(today.getFullYear()+12, today.getMonth(), today.getDate())
+
+    const todos = [
+        {id: 1, description: "Learn how to do a backflip", done: false, targetedDate: TargetDate},
+        {id: 2, description: "Learn to read", done: false, targetedDate: TargetDate},
+        {id: 3, description: "Learn to write", done: false, targetedDate: TargetDate},
+
+    ]
+
+    return  (
+        <div className="container">
+            <h1>My Todo List</h1>
+            <div>
+                <table className="table">
+                    <thead>
+                        <tr>
+                            <td>Id:</td>
+                            <td>Description:</td>
+                            <td>Completed?</td>
+                            <td>Target Date:</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {
+                        todos.map (
+                            todo => (
+                                <tr key={todo.id}>
+                                    <td>{todo.id}</td>
+                                    <td>{todo.description}</td>
+                                    <td>{todo.done.toString()}</td>
+                                    <td>{todo.targetedDate.toDateString()}</td>
+                                </tr>
+                            )
+                        )
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    )
+}
+
+function HeaderComponent(){
+    return  (
+        <div className="Header">
+            Header <hr/>
+        </div>
+    )
+}
+
+function FooterComponent(){
+    return  (
+        <div className="Footer">
+            <hr/>
+            Footer
+        </div>
+    )
+}
+
+function LogoutComponent(){
+    return  (
+        <div className="Logout">
+            <h1>Logged out</h1>
+            Goodbye!
         </div>
     )
 }

@@ -5,8 +5,9 @@ import Counter from "./components/Counter/Counter";
 function App() {
   return (
     <div className="App">
-      My Todo Application
-      <Counter></Counter>
+        My Todo Application
+        <Counter></Counter>
+
     </div>
   );
 }

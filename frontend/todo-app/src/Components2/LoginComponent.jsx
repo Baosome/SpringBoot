@@ -1,5 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
+import {useAuth} from "./Security/AuthContext";
 export default function LoginComponent(){
     const [userName, setUserName] = useState("Bao")
     const [password, setPassword] = useState("Password")
@@ -8,6 +9,8 @@ export default function LoginComponent(){
     const [failed, setFailed] = useState(false)
 
     const navigate = useNavigate()
+
+    const authContext = useAuth();
 
     function HandleUsernameChanged(event) {
         setUserName(event.target.value)
@@ -22,9 +25,13 @@ export default function LoginComponent(){
             setSuccess(true)
             setFailed(false)
             navigate(`/welcome/${userName}`) // javascript adding variable, use tick ` and ${var}
+
+            authContext.setAuthenticated(true)
         } else {
             setSuccess(false)
             setFailed(true)
+
+            authContext.setAuthenticated(true)
         }
     }
 
@@ -44,7 +51,6 @@ export default function LoginComponent(){
             )
         }
     }
-
 
     return  (
         <div className="Login">

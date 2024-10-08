@@ -1,7 +1,13 @@
 import {Link} from "react-router-dom";
-import React from "react";
+import React, {useContext} from "react";
+import {AuthContext, useAuth} from "./Security/AuthContext";
 
 export default function HeaderComponent(){
+    // const authContext = useContext(AuthContext)
+
+    const authContext = useAuth()
+
+    // console.log(authContext.number)
 
     return (
         <header className="border-bottom border-light border-5 mb-5 p-2">
@@ -13,9 +19,11 @@ export default function HeaderComponent(){
                                 <li className="navbar-brand ms-2 fs-2
                                 fw-bold text-black"><Link className="nav-link"
                                                           to="/welcome/Bao">Home</Link></li>
+                            </ul>
+                            <ul className="navbar-nav">
                                 <li className="nav-item fs-5">
                                     <Link className="nav-link" to="/todos">Todos</Link></li>
-                            </ul>
+                                </ul>
                         </div>
                         <ul className="navbar-nav">
                             <li className="nav-item fs-5">

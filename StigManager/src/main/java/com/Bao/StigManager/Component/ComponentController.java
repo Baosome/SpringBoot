@@ -24,9 +24,9 @@ import java.util.List;
 @SessionAttributes("name")
 public class ComponentController {
 
-    private SystemRepository systemRepository;
-    private ComponentRepository componentRepository;
-    private StigsRepository stigsRepository;
+    private final SystemRepository systemRepository;
+    private final ComponentRepository componentRepository;
+    private final StigsRepository stigsRepository;
 
 
     Logger logger = LoggerFactory.getLogger(ComponentController.class);
@@ -48,12 +48,13 @@ public class ComponentController {
         List<ComponentEntity> softwares = componentRepository.findByeMassIdAndComponentType(id, "Software");
         List<StigEntity> stigs = stigsRepository.findByEMassId(0);
         List<StigEntity> myStigs = stigsRepository.findByEMassId(id);
+        StigLists SystemStigs = new StigLists(myStigs, "");
 
         //Add list to jsp
         model.addAttribute("Hardwares", hardwares);
         model.addAttribute("Softwares", softwares);
         model.addAttribute("Stigs", stigs);
-        model.addAttribute("myStigs", myStigs);
+        model.addAttribute("myStigs", SystemStigs);
 
         //Set up classes for POST
         ComponentEntity componentEntity = new ComponentEntity(0, 0,
@@ -65,25 +66,16 @@ public class ComponentController {
         return "SystemPage";
     }
 
-    /*
-        TODO:
-        [x] Add Stig map form to jsp Post for stig map
-        [] Match with stig id and stig name
-        [] Update page to show which stig is selected
-        [] Update stig counter
-    */
-
     @RequestMapping(value = "system", method=RequestMethod.POST)
     public String UpdateComponent(@RequestParam int id, @Valid ComponentEntity component, @Valid StigLists stiglist, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "/";
 
-
-        if (!stiglist.getMyStigList().isEmpty()) {
-            logger.info(stiglist.toString());
+        if (stiglist.getMyStigList()!= null && !stiglist.getMyStigList().isEmpty()) {
+            logger.info(stiglist.toString()); // What is returned
             for (StigEntity stig : stiglist.getMyStigList()) {
                 int numOfStigs = (int) stigsRepository.count() +1;
                 StigEntity newStig = new StigEntity(numOfStigs, id, stiglist.getComponentName(), stig.getName(), stig.getVersion(), stig.getRelease());
-                logger.info(newStig.toString());
+//              logger.info(newStig.toString());
                 stigsRepository.save(newStig);
             }
         }
@@ -93,7 +85,7 @@ public class ComponentController {
             component.setComponentId(numOfComponents);
             component.seteMassId(id);
             componentRepository.save(component);
-            logger.info(component.toString());
+//          logger.info(component.toString());
         }
 
         return "redirect:/system?id=" + id;

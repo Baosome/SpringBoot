@@ -4,7 +4,7 @@
             <p class="d-inline-flex gap-1 w-100">
                 <a class="btn btn-secondary w-100" data-bs-toggle="collapse" href="#${hardware.getRef()}" role="button"
                    aria-expanded="false">${hardware.name}
-                    <span class="badge bg-primary">${Hardwares.size()}</span></a>
+                    <span class="badge bg-primary">${myStigs.getSizeByComponentName(hardware.name)}</span></a>
             </p>
             <div class="collapse multi-collapse mb-3" id="${hardware.getRef()}">
                 <div class="card card-body">

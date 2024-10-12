@@ -1,6 +1,6 @@
 <div class="col">
     <div class="container-fluid">
-        <c:forEach items="${myStigs}" var="myStig">
+        <c:forEach items="${myStigs.getMyStigList()}" var="myStig">
             <c:choose>
                 <c:when test="${myStig.getComponentName() == hardware.name}">
                     <span class="badge bg-primary p-2">${myStig.getName()} V${myStig.getVersion()} R${myStig.getRelease()}</span>

@@ -23,7 +23,7 @@ import jakarta.validation.Valid;
 @SessionAttributes("name")
 public class WelcomeController {
 
-    private SystemRepository systemRepository;
+    private final SystemRepository systemRepository;
 
     Logger logger = LoggerFactory.getLogger(WelcomeController.class);
 

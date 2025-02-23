@@ -1,5 +1,5 @@
 <div class="col-1">
-    <button class="text-white fw-bold bg-success" data-bs-toggle="modal"
+    <button class="text-white fw-bold bg-success p-1" data-bs-toggle="modal"
             data-bs-target="#${hardware.getRef()}2">Add
     </button>
     <div class="modal" id="${hardware.getRef()}2" tabindex="-1">

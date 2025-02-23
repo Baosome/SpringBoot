@@ -1,8 +1,6 @@
 <%@ include file="common/header.jspf" %>
     <title>Welcome Page</title>
-
     <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="mySheets.css">
 </head>
 <body>
 <%@ include file="common/navbar.jspf" %>
@@ -10,13 +8,13 @@
         <div class="d-flex justify-content-end">
             <a class="btn btn-success m-3" href = "/add-system">Add New System</a>
         </div>
-        <div class="bNavBar">test</div>
         <table class="table">
             <thead class="table-dark">
                 <tr>
                     <th>System Name</th>
                     <th>ATO Date</th>
                     <th>eMass ID</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
@@ -27,6 +25,7 @@
                         <td>${system.atoDate}</td>
                         <td>${system.eMassId}</td>
                         <td><a class="btn btn-primary" href="/system?id=${system.eMassId}">Manage</a></td>
+                        <td><a href="deleteSystem?id=${system.eMassId}" class="btn btn-close" ></a></td>
                     </tr>
                 </c:forEach>
             </tbody>

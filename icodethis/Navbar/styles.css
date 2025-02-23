@@ -1,0 +1,22 @@
+body {
+    font-family: 'Source Code Pro', monospace;
+}
+
+
+.bNavBar{
+    background-color: #f3f4f6;
+    position: sticky;
+    height: 80svh;
+    width: 180px;
+    display: grid;
+    align-content: space-between;
+}
+
+.mainNavList{
+    margin-top: 1rem;
+
+}
+
+.navBarList{
+    list-style: none;
+}

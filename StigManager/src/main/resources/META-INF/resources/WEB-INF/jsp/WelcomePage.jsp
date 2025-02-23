@@ -1,5 +1,6 @@
 <%@ include file="common/header.jspf" %>
     <title>Welcome Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css/">
     <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
 </head>
 <body>
@@ -8,6 +9,7 @@
         <div class="d-flex justify-content-end">
             <a class="btn btn-success m-3" href = "/add-system">Add New System</a>
         </div>
+        <div class="bNavBar">test</div>
         <table class="table">
             <thead class="table-dark">
                 <tr>

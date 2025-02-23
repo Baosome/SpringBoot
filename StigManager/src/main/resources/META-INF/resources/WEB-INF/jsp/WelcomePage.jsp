@@ -1,7 +1,8 @@
 <%@ include file="common/header.jspf" %>
     <title>Welcome Page</title>
-    <link rel="stylesheet" type="text/css" href="styles.css/">
+
     <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="mySheets.css">
 </head>
 <body>
 <%@ include file="common/navbar.jspf" %>

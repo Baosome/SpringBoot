@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface StigsRepository extends JpaRepository<StigEntity, Integer>{
     public List<StigEntity> findByEMassId(int id);
+
 }

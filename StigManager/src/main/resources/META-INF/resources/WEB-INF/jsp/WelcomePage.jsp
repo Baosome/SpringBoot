@@ -19,6 +19,7 @@
                     <th>ATO Date</th>
                     <th>eMass ID</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
                         <td>${system.atoDate}</td>
                         <td>${system.eMassId}</td>
                         <td><a class="btn btn-primary" href="/system?id=${system.eMassId}">Manage</a></td>
+                        <td><a href="deleteSystem?id=${system.eMassId}" class="btn btn-close" ></a></td>
                     </tr>
                 </c:forEach>
             </tbody>

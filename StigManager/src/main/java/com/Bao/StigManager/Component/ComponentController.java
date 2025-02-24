@@ -38,7 +38,7 @@ public class ComponentController {
     }
 
     @RequestMapping(value = "system", method=RequestMethod.GET)
-    public String showUpdateTodoPage(@RequestParam int id, ModelMap model) {
+    public String showUpdateSystemPage(@RequestParam int id, ModelMap model) {
         //Find System ID
         var mySystem = systemRepository.findById(id).get();
         model.addAttribute("system", mySystem);
@@ -90,5 +90,7 @@ public class ComponentController {
 
         return "redirect:/system?id=" + id;
     }
+
+
 
 }

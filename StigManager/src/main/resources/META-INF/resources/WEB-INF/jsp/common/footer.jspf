@@ -5,6 +5,9 @@
     $('#AtoDate').datepicker({
         format: 'yyyy-mm-dd'
     });
+    $('#ldaDate').datepicker({
+        format: 'yyyy-mm-dd'
+    });
 </script>
 </body>
 </html>

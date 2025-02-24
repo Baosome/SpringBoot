@@ -5,6 +5,8 @@ import java.util.function.Function;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,23 +20,21 @@ public class SpringSecurityConfiguration {
 
     @Bean
     public InMemoryUserDetailsManager createConfiguration() {
-        UserDetails userDetails1 = createNewUserDetails("Bao", "Password");
+        UserDetails userDetails1 = createNewUserDetails();
 
         return new InMemoryUserDetailsManager(userDetails1);
     }
 
-    private UserDetails createNewUserDetails(String username, String password) {
+    private UserDetails createNewUserDetails() {
         Function<String, String> passwordEncoder
             = input -> passwordEncoder().encode(input);
 
-            UserDetails userDetails = User.builder()
-                .passwordEncoder(passwordEncoder)
-                .username(username)
-                .password(password)
-                .roles("USER","ADMIN")
-                .build();
-            
-            return userDetails;
+        return User.builder()
+            .passwordEncoder(passwordEncoder)
+            .username("Bao")
+            .password("Password")
+            .roles("USER","ADMIN")
+            .build();
     }
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -49,8 +49,8 @@ public class SpringSecurityConfiguration {
 				auth -> auth.anyRequest().authenticated()
 		);
 		http.formLogin(Customizer.withDefaults());
-		http.csrf(csrf -> csrf.disable());
-		http.headers(header -> header.frameOptions(frameOptions -> frameOptions.disable()));
+		http.csrf(AbstractHttpConfigurer::disable);
+		http.headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
 	 
 		return http.build();
 	}

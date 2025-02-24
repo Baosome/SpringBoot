@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.Bao.StigManager.Repositories.SystemRepository;
@@ -63,6 +64,15 @@ public class WelcomeController {
         systemEntity.setUsername(getUsername());
         systemRepository.save(systemEntity);
         logger.info(systemEntity.toString());
+        return "redirect:/";
+    }
+
+    @RequestMapping(value="deleteSystem")
+    private String deleteSystem(@RequestParam int id) {
+
+        systemRepository.deleteById(id);
+
+
         return "redirect:/";
     }
 

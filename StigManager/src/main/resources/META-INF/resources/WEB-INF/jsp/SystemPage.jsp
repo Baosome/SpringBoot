@@ -7,6 +7,7 @@
 
 <%@ include file="common/navbar.jspf" %>
 <div class="container">
+
     <div class="row bg-body">
         <%@ include file="SystemPageHelper/SystemDetails.jspf" %>
         <div class="col-9 mt-3">

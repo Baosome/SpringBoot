@@ -5,13 +5,12 @@
 </head>
 <body>
 <%@ include file="common/navbar.jspf" %>
-    <div class="bSide-Nav-Bar">
-        <p>test</p>
-    </div>
+<%@ include file="common/bNavBar.jspf" %>
     <div class="container">
         <div class="d-flex justify-content-end">
             <a class="btn btn-success m-3" href = "/add-system">Add New System</a>
         </div>
+
         <table class="table">
             <thead class="table-dark">
                 <tr>

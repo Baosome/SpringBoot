@@ -1,7 +1,71 @@
-.bSide-Nav-Bar {
-    background-color: gray;
+/*body {*/
+/*    font-family: 'Source Code Pro', monospace;*/
+/*}*/
+
+.mainBar {
+    background-color: #212529;
     position: fixed;
+    height: 100svh;
+    width: 15rem;
+    transition: .25s ease-out;
+}
+
+
+.mainBar.closeNav{
+    width: 6rem;
+    height: 100svh;
+}
+
+.mainBar.closeNav .bNavBar>.navBarList>.mainNavList > a {
+    display: none;
+}
+
+.toggleNavBar {
+    background-color: #212529;
+}
+
+.topBar {
     display: grid;
+    grid-template-columns: 1fr .3fr;
+    margin: .5rem .5rem 0;
+    align-items: center;
+}
+
+.userIcon {
+    color: white;
+}
+
+
+.bNavBar{
+    background-color: #212529;
+    display: grid;
+    align-content: space-between;
     height: 100%;
-    width: 200px;
+
+}
+
+.mainNavList{
+    margin-top: 1rem;
+    margin-right: 1rem;
+    transition: .25s ease-out;
+    border-radius: 15%;
+    display: grid;
+    grid-template-columns: .25fr 1fr;
+    align-items: center;
+}
+
+.mainNavList a{
+    text-decoration: none;
+    color: white;
+
+}
+
+.mainNavList:hover {
+    background-color: #374151;
+}
+
+.navBarList{
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 8rem;
 }

@@ -1,0 +1,40 @@
+<div class="mainBar">
+    <div class="topBar">
+        <div class="userIcon">Name</div>
+        <button class="toggleNavBar">
+            <img src="../myCSS/Icons/chevron_left.svg" alt="">
+        </button>
+    </div>
+    <div class="bNavBar">
+
+        <ul class="navBarList">
+            <li class="mainNavList">
+                <img src="../myCSS/Icons/list.svg" alt="">
+                <a href="">Systems</a></li>
+            <li class="mainNavList">
+                <img src="../myCSS/Icons/hardware.svg" alt="">
+                <a href="">Hardware</a></li>
+            <li class="mainNavList">
+                <img src="../myCSS/Icons/software.svg" alt="">
+                <a href="">Software</a></li>
+            <li class="mainNavList">
+                <img src="../myCSS/Icons/controls.svg" alt="">
+                <a href="">Controls</a></li>
+            <li class="mainNavList">
+                <img src="../myCSS/Icons/stigs.svg" alt="">
+                <a href="">STIGS</a></li>
+            <li class="mainNavList">
+                <img src="../myCSS/Icons/acas.svg" alt="">
+                <a href="">ACAS</a></li>
+
+        </ul>
+        <ul class="navBarList">
+            <li class="mainNavList">
+                <img src="../myCSS/Icons/plugins.svg" alt="">
+                <a href="">Plugins</a></li>
+            <li class="mainNavList">
+                <img src="../myCSS/Icons/cves.svg" alt="">
+                <a href="">CVEs</a></li>
+        </ul>
+    </div>
+</div>

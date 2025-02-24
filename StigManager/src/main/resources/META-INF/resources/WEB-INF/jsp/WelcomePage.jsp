@@ -1,9 +1,13 @@
 <%@ include file="common/header.jspf" %>
     <title>Welcome Page</title>
     <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../myCSS/baoCSS.css">
 </head>
 <body>
 <%@ include file="common/navbar.jspf" %>
+    <div class="bSide-Nav-Bar">
+        <p>test</p>
+    </div>
     <div class="container">
         <div class="d-flex justify-content-end">
             <a class="btn btn-success m-3" href = "/add-system">Add New System</a>
@@ -29,4 +33,5 @@
             </tbody>
           </table>
     </div>
+
 <%@ include file="common/footer.jspf" %>

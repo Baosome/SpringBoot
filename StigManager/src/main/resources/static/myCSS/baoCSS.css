@@ -1,0 +1,7 @@
+.bSide-Nav-Bar {
+    background-color: gray;
+    position: fixed;
+    display: grid;
+    height: 100%;
+    width: 200px;
+}

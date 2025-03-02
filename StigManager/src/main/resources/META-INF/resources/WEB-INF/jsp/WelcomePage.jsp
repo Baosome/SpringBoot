@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="../myCSS/baoCSS.css">
 </head>
 <body>
-<%@ include file="common/navbar.jspf" %>
+<%--<%@ include file="common/navbar.jspf" %>--%>
 <%@ include file="common/bNavBar.jspf" %>
     <div class="container">
         <div class="d-flex justify-content-end">

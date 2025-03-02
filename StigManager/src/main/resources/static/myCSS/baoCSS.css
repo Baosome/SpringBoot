@@ -54,6 +54,12 @@
     align-items: center;
 }
 
+.userIcon a{
+    text-decoration: none;
+    color: white;
+
+}
+
 .mainNavList a{
     text-decoration: none;
     color: white;

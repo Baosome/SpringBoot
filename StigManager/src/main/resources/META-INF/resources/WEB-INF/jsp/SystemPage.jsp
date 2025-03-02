@@ -1,11 +1,13 @@
 <%@ include file="common/header.jspf" %>
     <title>System Page</title>
     <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../myCSS/baoCSS.css">
     <link href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css" rel="stylesheet">
 </head>
 <body>
 
-<%@ include file="common/navbar.jspf" %>
+<%--<%@ include file="common/navbar.jspf" %>--%>
+<%@ include file="common/bNavBar.jspf" %>
 <div class="container">
 
     <div class="row bg-body">

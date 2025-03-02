@@ -1,6 +1,6 @@
 <div class="mainBar closeNav">
     <div class="topBar">
-        <div class="userIcon">Name</div>
+        <div class="userIcon"><a href="/">Home</a></div>
         <button class="toggleNavBar">
             <img src="../myCSS/Icons/chevron_left.svg" alt="">
         </button>

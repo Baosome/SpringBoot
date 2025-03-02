@@ -31,7 +31,8 @@ public class WelcomeController {
 
     Logger logger = LoggerFactory.getLogger(WelcomeController.class);
 
-    public WelcomeController(SystemRepository systemRepository, StigsViewerRepository stigsViewerRepository ) {
+    public WelcomeController(SystemRepository systemRepository,
+                             StigsViewerRepository stigsViewerRepository ) {
         this.systemRepository = systemRepository;
         this.stigsViewerRepository = stigsViewerRepository;
     }
@@ -61,16 +62,15 @@ public class WelcomeController {
 
     @RequestMapping(value = "add-system", method = RequestMethod.GET)
     private String newSystemGet(ModelMap modelMap) {
-        
-        SystemEntity newSystemEntity = new SystemEntity(0, getUsername(), "", null);
-
+        SystemEntity newSystemEntity = new SystemEntity(0, getUsername(),
+                "", null);
         modelMap.addAttribute("system", newSystemEntity);
         return "NewSystemPage";
     }
 
     @RequestMapping(value = "add-system", method = RequestMethod.POST)
-    private String newSystemPost(ModelMap modelMap, @Valid SystemEntity systemEntity, BindingResult result) {
-
+    private String newSystemPost(ModelMap modelMap, @Valid SystemEntity systemEntity,
+                                 BindingResult result) {
         if (result.hasErrors()) return "/";
         systemEntity.setUsername(getUsername());
         systemRepository.save(systemEntity);

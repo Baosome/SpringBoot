@@ -1,4 +1,4 @@
-<div class="mainBar">
+<div class="mainBar closeNav">
     <div class="topBar">
         <div class="userIcon">Name</div>
         <button class="toggleNavBar">
@@ -22,7 +22,7 @@
                 <a href="">Controls</a></li>
             <li class="mainNavList">
                 <img src="../myCSS/Icons/stigs.svg" alt="">
-                <a href="">STIGS</a></li>
+                <a href="/stigsviewer">STIGS</a></li>
             <li class="mainNavList">
                 <img src="../myCSS/Icons/acas.svg" alt="">
                 <a href="">ACAS</a></li>

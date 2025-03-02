@@ -3,6 +3,8 @@ package com.Bao.StigManager;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.Bao.StigManager.Repositories.StigsViewerRepository;
+import com.Bao.StigManager.STIG.StigViewerEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
@@ -25,22 +27,31 @@ import jakarta.validation.Valid;
 public class WelcomeController {
 
     private final SystemRepository systemRepository;
+    private final StigsViewerRepository stigsViewerRepository;
 
     Logger logger = LoggerFactory.getLogger(WelcomeController.class);
 
-    public WelcomeController(SystemRepository systemRepository) {
+    public WelcomeController(SystemRepository systemRepository, StigsViewerRepository stigsViewerRepository ) {
         this.systemRepository = systemRepository;
+        this.stigsViewerRepository = stigsViewerRepository;
     }
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String Welcome(ModelMap modelMap){
         modelMap.put("name", getUsername());
-
         // Grab repository and display it to system list in welcome page
         List<SystemEntity> systems = systemRepository.findByUsername(getUsername());
         modelMap.addAttribute("systems", systems);
-
         return "WelcomePage";
+    }
+
+    @RequestMapping(value="/stigsviewer", method = RequestMethod.GET)
+    public String StigViewPage(ModelMap modelMap){
+        modelMap.put("name", getUsername());
+        // Grab repository and display it to system list in welcome page
+        List<StigViewerEntity> Stigs = stigsViewerRepository.findAll();
+        modelMap.addAttribute("Stigs", Stigs);
+        return "StigViewerPage";
     }
 
     private String getUsername() {
@@ -69,10 +80,7 @@ public class WelcomeController {
 
     @RequestMapping(value="deleteSystem")
     private String deleteSystem(@RequestParam int id) {
-
         systemRepository.deleteById(id);
-
-
         return "redirect:/";
     }
 

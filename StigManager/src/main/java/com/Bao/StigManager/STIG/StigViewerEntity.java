@@ -4,31 +4,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class StigEntity {
+public class StigViewerEntity {
 
     @Id
     int StigId;
 
-    int eMassId;
-    String ComponentName;
     String Name;
     String  Version;
     String Release;
     String Link;
 
-    public StigEntity(int stigID, int eMassId, String componentName,
-                      String name, String version, String release,
-                      String link) {
+    public StigViewerEntity(int stigID, String name, String version,
+                            String release, String link) {
         StigId = stigID;
-        this.eMassId = eMassId;
-        ComponentName = componentName;
         Name = name;
         Version = version;
         Release = release;
         Link = link;
     }
 
-    public StigEntity() {
+    public StigViewerEntity() {
 
     }
 
@@ -36,9 +31,6 @@ public class StigEntity {
         return StigId;
     }
 
-    public int geteMassId() {
-        return eMassId;
-    }
 
     public String getName() {
         return Name;
@@ -68,24 +60,11 @@ public class StigEntity {
         StigId = stigId;
     }
 
-    public void seteMassId(int eMassId) {
-        this.eMassId = eMassId;
-    }
-
-    public String getComponentName() {
-        return ComponentName;
-    }
-
-    public void setComponentName(String componentName) {
-        ComponentName = componentName;
-    }
 
     @Override
     public String toString() {
         return "StigEntity{" +
                 "StigId=" + StigId +
-                ", eMassId=" + eMassId +
-                ", ComponentName='" + ComponentName + '\'' +
                 ", Name='" + Name + '\'' +
                 ", Version=" + Version +
                 ", Release=" + Release +

@@ -1,15 +1,14 @@
-package com.Bao.StigManager.Component;
+package com.Bao.StigManager;
 
+import com.Bao.StigManager.Component.ComponentEntity;
 import com.Bao.StigManager.Repositories.ComponentRepository;
 import com.Bao.StigManager.Repositories.StigsRepository;
 import com.Bao.StigManager.STIG.StigEntity;
 import com.Bao.StigManager.STIG.StigLists;
-import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.Bao.StigManager.Repositories.SystemRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -66,30 +64,30 @@ public class ComponentController {
         return "SystemPage";
     }
 
-    @RequestMapping(value = "system", method=RequestMethod.POST)
-    public String UpdateComponent(@RequestParam int id, @Valid ComponentEntity component, @Valid StigLists stiglist, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) return "/";
-
-        if (stiglist.getMyStigList()!= null && !stiglist.getMyStigList().isEmpty()) {
-            logger.info(stiglist.toString()); // What is returned
-            for (StigEntity stig : stiglist.getMyStigList()) {
-                int numOfStigs = (int) stigsRepository.count() +1;
-                StigEntity newStig = new StigEntity(numOfStigs, id, stiglist.getComponentName(), stig.getName(), stig.getVersion(), stig.getRelease());
-//              logger.info(newStig.toString());
-                stigsRepository.save(newStig);
-            }
-        }
-
-        if (component.getName() != null) {
-            int numOfComponents = (int) componentRepository.count() + 1;
-            component.setComponentId(numOfComponents);
-            component.seteMassId(id);
-            componentRepository.save(component);
-//          logger.info(component.toString());
-        }
-
-        return "redirect:/system?id=" + id;
-    }
+//    @RequestMapping(value = "system", method=RequestMethod.POST)
+//    public String UpdateComponent(@RequestParam int id, @Valid ComponentEntity component, @Valid StigLists stiglist, BindingResult bindingResult) {
+//        if (bindingResult.hasErrors()) return "/";
+//
+//        if (stiglist.getMyStigList()!= null && !stiglist.getMyStigList().isEmpty()) {
+//            logger.info(stiglist.toString()); // What is returned
+//            for (StigEntity stig : stiglist.getMyStigList()) {
+//                int numOfStigs = (int) stigsRepository.count() +1;
+//                StigEntity newStig = new StigEntity(numOfStigs, id, stiglist.getComponentName(), stig.getName(), stig.getVersion(), stig.getRelease());
+////              logger.info(newStig.toString());
+//                stigsRepository.save(newStig);
+//            }
+//        }
+//
+//        if (component.getName() != null) {
+//            int numOfComponents = (int) componentRepository.count() + 1;
+//            component.setComponentId(numOfComponents);
+//            component.seteMassId(id);
+//            componentRepository.save(component);
+////          logger.info(component.toString());
+//        }
+//
+//        return "redirect:/system?id=" + id;
+//    }
 
 
 

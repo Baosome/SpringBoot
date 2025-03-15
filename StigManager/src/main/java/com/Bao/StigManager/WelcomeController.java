@@ -51,15 +51,12 @@ public class WelcomeController {
         modelMap.put("name", getUsername());
 
         if (search != null && !search.isEmpty()) {
-            List<StigViewerEntity> Stigs = stigsViewerRepository.findAll();
+            List<StigViewerEntity> Stigs = stigsViewerRepository.searchByNameIgnoreCase(search);
             modelMap.addAttribute("Stigs", Stigs);
-            System.out.println(search);
         } else {
             List<StigViewerEntity> Stigs = stigsViewerRepository.findAll();
             modelMap.addAttribute("Stigs", Stigs);
         }
-
-
 
         return "StigViewerPage";
     }

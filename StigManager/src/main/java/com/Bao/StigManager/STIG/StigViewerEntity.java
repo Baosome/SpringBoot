@@ -1,5 +1,6 @@
 package com.Bao.StigManager.STIG;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -7,17 +8,17 @@ import jakarta.persistence.Id;
 public class StigViewerEntity {
 
     @Id
-    int StigId;
-
-    String Name;
+    int stigId;
+    @Column(name = "name")
+    String name;
     String  Version;
     String Release;
     String Link;
 
     public StigViewerEntity(int stigID, String name, String version,
                             String release, String link) {
-        StigId = stigID;
-        Name = name;
+        this.stigId = stigID;
+        this.name = name;
         Version = version;
         Release = release;
         Link = link;
@@ -28,16 +29,16 @@ public class StigViewerEntity {
     }
 
     public int getStigId() {
-        return StigId;
+        return this.stigId;
     }
 
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getVersion() {
@@ -57,15 +58,15 @@ public class StigViewerEntity {
     }
 
     public void setStigId(int stigId) {
-        StigId = stigId;
+        this.stigId = stigId;
     }
 
 
     @Override
     public String toString() {
         return "StigEntity{" +
-                "StigId=" + StigId +
-                ", Name='" + Name + '\'' +
+                "StigId=" + stigId +
+                ", Name='" + name + '\'' +
                 ", Version=" + Version +
                 ", Release=" + Release +
                 '}';

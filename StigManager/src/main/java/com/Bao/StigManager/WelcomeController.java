@@ -1,6 +1,5 @@
 package com.Bao.StigManager;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import com.Bao.StigManager.Repositories.StigsViewerRepository;
@@ -47,13 +46,24 @@ public class WelcomeController {
     }
 
     @RequestMapping(value="/stigsviewer", method = RequestMethod.GET)
-    public String StigViewPage(ModelMap modelMap){
+    public String showAllStigs(ModelMap modelMap, @RequestParam (value="search",
+            required = false) String search){
         modelMap.put("name", getUsername());
-        // Grab repository and display it to system list in welcome page
-        List<StigViewerEntity> Stigs = stigsViewerRepository.findAll();
-        modelMap.addAttribute("Stigs", Stigs);
+
+        if (search != null && !search.isEmpty()) {
+            List<StigViewerEntity> Stigs = stigsViewerRepository.findAll();
+            modelMap.addAttribute("Stigs", Stigs);
+            System.out.println(search);
+        } else {
+            List<StigViewerEntity> Stigs = stigsViewerRepository.findAll();
+            modelMap.addAttribute("Stigs", Stigs);
+        }
+
+
+
         return "StigViewerPage";
     }
+
 
     private String getUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -69,7 +79,7 @@ public class WelcomeController {
     }
 
     @RequestMapping(value = "add-system", method = RequestMethod.POST)
-    private String newSystemPost(ModelMap modelMap, @Valid SystemEntity systemEntity,
+    private String newSystemPost(@Valid SystemEntity systemEntity,
                                  BindingResult result) {
         if (result.hasErrors()) return "/";
         systemEntity.setUsername(getUsername());

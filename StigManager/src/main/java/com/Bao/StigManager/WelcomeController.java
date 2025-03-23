@@ -61,7 +61,6 @@ public class WelcomeController {
         return "StigViewerPage";
     }
 
-
     private String getUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authentication.getName();

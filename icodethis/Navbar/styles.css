@@ -1,7 +1,7 @@
 body {
     font-family: 'Source Code Pro', monospace;
 }
-
+/* NAVBAR------------------------------------------------------------------------------------------------------------*/
 .mainBar {
     background-color: #212529;
     position: fixed;
@@ -9,7 +9,6 @@ body {
     width: 15rem;
     transition: .25s ease-out;
 }
-
 
 .mainBar.closeNav{
     width: 6rem;
@@ -34,7 +33,6 @@ body {
 .userIcon {
     color: white;
 }
-
 
 .bNavBar{
     background-color: #212529;
@@ -75,3 +73,62 @@ body {
     margin-top: 0;
     margin-bottom: 8rem;
 }
+
+/* CheckList----------------------------------------------------------------------------------------------------------*/
+
+
+.CheckListMain {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.CheckListHeader{
+    background-color: #212529;
+    color: white;
+    width: 80%;
+    margin: .25rem;
+    padding: .5rem;
+}
+
+.CheckListDetailContainer{
+    background-color: #4E5B69;
+    width: 80%;
+    margin: .1rem;
+    padding: .75rem;
+    display: grid;
+    color:white;
+    grid-template-columns: .2fr 1fr;
+    border-radius: 1%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

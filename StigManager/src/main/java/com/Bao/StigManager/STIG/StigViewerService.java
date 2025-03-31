@@ -27,6 +27,7 @@ import java.util.Iterator;
 @Service
 public class StigViewerService {
     private static final String STIG_URL = "https://cyber.trackr.live/api/stig";
+    private static final String CHECKLIST_URL = "https://cyber.trackr.live/api";
 
     @Autowired
     private StigsViewerRepository stigsViewerRepository;
@@ -74,15 +75,34 @@ public class StigViewerService {
     }
 
     public Checklist fetchStiglist(String link) throws IOException, InterruptedException{
-        var stigUrl = "https://cyber.trackr.live/api"+link;
+        var stigUrl = CHECKLIST_URL+link;
 
         JsonNode jsonNode = getJsonNode(stigUrl);
         String title = jsonNode.get("title").asText();
         String description = jsonNode.get("description").asText();
         String publishedDate = jsonNode.get("published").asText();
-        logger.info(title);
+//      logger.info(title);
+        //Get individual checks and store it int other arrylist
         var stigVuls = new ArrayList<StigVul>();
-        
+
+        var requirements = jsonNode.get("requirements").fields();
+
+        //Itr each vul ids;
+        while (requirements.hasNext()) {
+            Entry<String, JsonNode> vulIDItr = requirements.next();
+            var vulId = vulIDItr.getKey();
+            var checklistInfoNode = vulIDItr.getValue();
+            var vulTitle = checklistInfoNode.get("title").asText();
+            var severity = vulIDItr.getValue().get("severity").asText();
+
+            var vulInfo = new StigVul(vulId, vulTitle, severity);
+            stigVuls.add(vulInfo);
+//            logger.info(vulId);
+//            logger.info(vulTitle);
+//            logger.info(severity);
+        }
+
+
         return new Checklist(title, description, publishedDate, stigVuls);
     }
 }

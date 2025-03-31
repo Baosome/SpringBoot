@@ -72,7 +72,9 @@ public class WelcomeController {
 
         var checklist = stigViewerService.fetchStiglist(myStig.getLink());
         modelMap.addAttribute("checklistJpa", checklist);
+        modelMap.addAttribute("vulListJpa", checklist.stigVuls());
         modelMap.addAttribute("stig", myStig);
+        System.out.println(checklist.stigVuls());
 
         return "StigChecklistPage";
     }

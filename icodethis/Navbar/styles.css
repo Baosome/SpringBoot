@@ -2,13 +2,13 @@ body {
     font-family: 'Source Code Pro', monospace;
 }
 
-.content{
+.bcontent{
     display: grid;
     grid-template-columns: .15fr 1fr;
     transition: .25s ease-out;
 }
 
-.content.closeContent{
+.bcontent.bcloseContent{
     display: grid;
     grid-template-columns: .05fr 1fr;
 }

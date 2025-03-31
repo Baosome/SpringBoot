@@ -29,9 +29,12 @@ public class StigViewerEntity {
     }
 
     public int getStigId() {
-        return this.stigId;
+        return stigId;
     }
 
+    public void setStigId(int stigId) {
+        this.stigId = stigId;
+    }
 
     public String getName() {
         return name;
@@ -57,18 +60,22 @@ public class StigViewerEntity {
         Release = release;
     }
 
-    public void setStigId(int stigId) {
-        this.stigId = stigId;
+    public String getLink() {
+        return Link;
     }
 
+    public void setLink(String link) {
+        Link = link;
+    }
 
     @Override
     public String toString() {
-        return "StigEntity{" +
-                "StigId=" + stigId +
-                ", Name='" + name + '\'' +
-                ", Version=" + Version +
-                ", Release=" + Release +
+        return "StigViewerEntity{" +
+                "stigId=" + stigId +
+                ", name='" + name + '\'' +
+                ", Version='" + Version + '\'' +
+                ", Release='" + Release + '\'' +
+                ", Link='" + Link + '\'' +
                 '}';
     }
 }

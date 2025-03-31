@@ -1,22 +1,34 @@
 /*body {*/
 /*    font-family: 'Source Code Pro', monospace;*/
 /*}*/
-
-.mainBar {
-    background-color: #212529;
-    position: fixed;
-    height: 100svh;
-    width: 15rem;
+.bcontent{
+    display: grid;
+    grid-template-columns: .15fr 1fr;
     transition: .25s ease-out;
 }
 
+.bcontent.bcloseContent{
+    display: grid;
+    grid-template-columns: .05fr 1fr;
+}
+
+/* NAVBAR------------------------------------------------------------------------------------------------------------*/
+
+.mainBar {
+    top: 0;
+    background-color: #212529;
+    position: sticky;
+    height: 100dvh;
+    transition: .25s ease-out;
+}
 
 .mainBar.closeNav{
-    width: 6rem;
-    height: 100svh;
+    height: 100dvh;
+    transition: .25s ease-out;
 }
 
 .mainBar.closeNav .bNavBar>.navBarList>.mainNavList > a {
+    transition: .25s ease-out;
     display: none;
 }
 
@@ -74,4 +86,32 @@
     list-style: none;
     margin-top: 0;
     margin-bottom: 8rem;
+}
+
+
+/* CheckList----------------------------------------------------------------------------------------------------------*/
+
+.CheckListMain {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+.CheckListHeader{
+    background-color: #212529;
+    color: white;
+    width: 90%;
+    margin: .25rem;
+    padding: .5rem;
+}
+
+.CheckListDetailContainer{
+    background-color: #4E5B69;
+    width: 90%;
+    margin: .1rem;
+    padding: .75rem;
+    display: grid;
+    color:white;
+    grid-template-columns: .2fr 1fr;
+    border-radius: 1%;
 }

@@ -5,6 +5,7 @@
 </head>
 <body>
 <%--<%@ include file="common/navbar.jspf" %>--%>
+<div class="bcontent bcloseContent">
 <%@ include file="common/bNavBar.jspf" %>
     <div class="container">
         <div class="d-flex justify-content-end">
@@ -34,5 +35,6 @@
             </tbody>
           </table>
     </div>
+</div>
 
 <%@ include file="common/footer.jspf" %>

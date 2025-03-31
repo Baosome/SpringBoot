@@ -7,6 +7,7 @@
 <body>
 
 <%--<%@ include file="common/navbar.jspf" %>--%>
+<div class="bcontent bcloseContent">
 <%@ include file="common/bNavBar.jspf" %>
 <div class="container">
 
@@ -33,5 +34,6 @@
 
         </div>
     </div>
+</div>
 </div>
 <%@ include file="common/footer.jspf" %>

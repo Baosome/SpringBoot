@@ -1,9 +1,11 @@
 package com.Bao.StigManager;
 
+import java.io.IOException;
 import java.util.List;
 
 import com.Bao.StigManager.Repositories.StigsViewerRepository;
 import com.Bao.StigManager.STIG.StigViewerEntity;
+import com.Bao.StigManager.STIG.StigViewerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindingResult;
@@ -27,13 +29,15 @@ public class WelcomeController {
 
     private final SystemRepository systemRepository;
     private final StigsViewerRepository stigsViewerRepository;
+    private final StigViewerService stigViewerService;
 
     Logger logger = LoggerFactory.getLogger(WelcomeController.class);
 
     public WelcomeController(SystemRepository systemRepository,
-                             StigsViewerRepository stigsViewerRepository ) {
+                             StigsViewerRepository stigsViewerRepository, StigViewerService stigViewerService) {
         this.systemRepository = systemRepository;
         this.stigsViewerRepository = stigsViewerRepository;
+        this.stigViewerService = stigViewerService;
     }
 
     @RequestMapping(value="/", method = RequestMethod.GET)
@@ -59,6 +63,18 @@ public class WelcomeController {
         }
 
         return "StigViewerPage";
+    }
+
+    @RequestMapping(value="/viewchecklist", method = RequestMethod.GET)
+    public String viewCheckList(ModelMap modelMap, @RequestParam int id) throws IOException, InterruptedException {
+        modelMap.put("name", getUsername());
+        var myStig = stigsViewerRepository.findById(id);
+
+        var checklist = stigViewerService.fetchStiglist(myStig.getLink());
+        modelMap.addAttribute("checklistJpa", checklist);
+        modelMap.addAttribute("stig", myStig);
+
+        return "StigChecklistPage";
     }
 
     private String getUsername() {

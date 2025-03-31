@@ -6,7 +6,6 @@
         </button>
     </div>
     <div class="bNavBar">
-
         <ul class="navBarList">
             <li class="mainNavList">
                 <img src="../myCSS/Icons/list.svg" alt="">

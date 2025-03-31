@@ -5,41 +5,42 @@
 </head>
 <body>
 <%--<%@ include file="common/navbar.jspf" %>--%>
+<div class="bcontent bcloseContent">
 <%@ include file="common/bNavBar.jspf" %>
-
-    <div class="container mt-2 mb-2">
-        <div class="row ">
-            <div class="col-6"></div>
-            <div class="col-6">
-                <form method="get">
-                    <fieldset>
-                        <label for="search">Search</label>
-                        <input id ="search" name = "search" type="text">
-                        <input type="submit" class = "btn btn-primary">
-                    </fieldset>
-                </form>
-            </div>
+    <div>
+        <div class="container mt-2 mb-2 d-flex justify-content-end">
+            <form method="get">
+                <fieldset>
+                    <label for="search">Search</label>
+                    <input id ="search" name = "search" type="text">
+                    <input type="submit" class = "btn btn-primary">
+                </fieldset>
+            </form>
         </div>
-    </div>
-    <div class="container">
-        <table class="table">
-            <thead class="table-dark">
+        <div class="container">
+            <table class="table">
+                <thead class="table-dark">
                 <tr>
                     <th>Stig Name</th>
                     <th>Version</th>
                     <th>Release</th>
+                    <th></th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 <c:forEach items ="${Stigs}" var = "stig">
                     <tr>
                         <td>${stig.name}</td>
                         <td>${stig.version}</td>
                         <td>${stig.release}</td>
-                  </tr>
+                        <td><a href="/viewchecklist?id=${stig.stigId}" class = "btn btn-primary">View</a></td>
+                    </tr>
                 </c:forEach>
-            </tbody>
-          </table>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+</div>
 
 <%@ include file="common/footer.jspf" %>

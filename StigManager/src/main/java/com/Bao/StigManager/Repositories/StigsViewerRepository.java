@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface StigsViewerRepository extends JpaRepository<StigViewerEntity, Integer>{
-    public List<StigViewerEntity> findById(int id);
+    StigViewerEntity findById(int id);
 
     List<StigViewerEntity> findByNameContaining(String name);
 

@@ -2,6 +2,7 @@ package com.Bao.StigManager.STIG;
 
 import com.Bao.StigManager.Checklist.Checklist;
 import com.Bao.StigManager.Checklist.StigVul;
+import com.Bao.StigManager.Checklist.VulInfo;
 import com.Bao.StigManager.ComponentController;
 import com.Bao.StigManager.Repositories.StigsViewerRepository;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -95,11 +96,24 @@ public class StigViewerService {
             var vulTitle = checklistInfoNode.get("title").asText();
             var severity = vulIDItr.getValue().get("severity").asText();
 
-            var vulInfo = new StigVul(vulId, vulTitle, severity);
-            stigVuls.add(vulInfo);
 //            logger.info(vulId);
 //            logger.info(vulTitle);
 //            logger.info(severity);
+//            var vulUrl = stigUrl+"/"+vulId;
+//            JsonNode jsonNode2 = getJsonNode(vulUrl);
+//            String requirementTitle = jsonNode2.get("requirement-title").asText();
+//            String requirementDescription = jsonNode2
+//                    .get("requirement-description").asText();
+//            String checkText = jsonNode2.get("check-text").asText();
+//            String fixText = jsonNode2.get("fix-text").asText();
+//            logger.info(requirementTitle);
+//            logger.info(requirementDescription);
+//            logger.info(checkText);
+//            var vulInfo = new VulInfo(requirementTitle, requirementDescription,
+//                    checkText, fixText);
+
+            var vul = new StigVul(vulId, vulTitle, severity);
+            stigVuls.add(vul);
         }
 
 

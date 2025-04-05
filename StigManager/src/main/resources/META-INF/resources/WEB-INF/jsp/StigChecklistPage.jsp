@@ -26,7 +26,7 @@
                         <h4>Vul ID: </h4>
                         <p>${vul.vulID()}</p>
                         <h4>Severity: </h4>
-                        <p>${vul.severity()}</p>
+                        <p class="severity-${vul.severity()}">${vul.severity()}</p>
                         <h4>Control: </h4>
                         <p>CM-6.5</p>
                     </div>

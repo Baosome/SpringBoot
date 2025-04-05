@@ -115,3 +115,16 @@
     grid-template-columns: .2fr 1fr;
     border-radius: 1%;
 }
+
+.severity-low {
+    color: green;
+    font-weight: bold;
+}
+.severity-medium {
+    color: orange;
+    font-weight: bold;
+}
+.severity-high {
+    color: red;
+    font-weight: bold;
+}
